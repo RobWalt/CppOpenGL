@@ -1,0 +1,9 @@
+[requires]
+gtest/1.10.0
+glfw/3.3.2
+opengl/system
+glm/0.9.9.8
+glew/2.1.0
+
+[generators]
+cmake

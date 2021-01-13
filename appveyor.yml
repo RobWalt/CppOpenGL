@@ -1,0 +1,19 @@
+image:
+  - Visual Studio 2019
+
+clone_folder: c:\projects\source
+
+before_build:
+  - pip install --user conan
+  - set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
+  - git submodule update --init --recursive
+  - mkdir build
+  - cd build
+
+build_script:
+  - conan install ..
+  - cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
+  - cmake --build . --config "Release"
+
+test_script:
+- cmd: ctest -C Debug
