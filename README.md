@@ -4,47 +4,38 @@
 [![Appveyor](https://ci.appveyor.com/api/projects/status/k4umysi98v5xo2sw/branch/master?svg=true)](https://ci.appveyor.com/project/franneck94/CppCmakeTemplate/branch/master)
 [![codecov](https://codecov.io/gh/franneck94/CppCmakeTemplate/branch/master/graph/badge.svg)](https://codecov.io/gh/franneck94/CppCmakeTemplate)
 
-# Template For C++ Projects 
-
-This is a template for C++ projects. What you get:
-
--   Sources, headers and test files separated in distinct folders.
--   External libraries that are locally cloned by [Github](https://github.com).
--   External libraries installed and managed by [Conan](https://conan.io/).
--   Use of modern [CMake](https://cmake.org/) for building and compiling.
--   Unit testing, using [GTest](https://github.com/google/googletest), Logging, using [Loguru](https://github.com/emilk/loguru) and Benchmarking, using [Celero](https://github.com/DigitalInBlue/Celero).
--   Continuous testing with [Travis-CI](https://travis-ci.org/) and [Appveyor](https://www.appveyor.com/).
--   Code coverage reports, including automatic upload to [Codecov](https://codecov.io).
--   Code documentation with [Doxygen](http://www.stack.nl/~dimitri/doxygen/).
--   Optional: Use of [VSCode](https://code.visualstudio.com/) with the C/C++ and CMakeTools extension.
+# OpenGL Hobby Project
 
 ## Structure
 ``` text
 ├── CMakeLists.txt
 ├── app
-│   └── main.cc
+│   ├── CMakesLists.txt
+│   └── main.cpp
 ├── benchmarks
 │   ├── CMakesLists.txt
-│   └── main.cc
+│   └── main.cpp
 ├── docs
 ├── ├── Doxyfile
 │   └── html...
 ├── external
 │   ├── CMakesLists.txt
-│   ├── linalg...
+│   ├── glm
+│   ├── glad
+│   ├── glfw
 │   ├── loguru...
 │   └── Celero...
 ├── include
 │   └── MyLib
-│       └── my_lib.h
+│       └── my_lib.hpp
 ├── src
 │   ├── CMakesLists.txt
 │   └── MyLib
 │       ├── CMakesLists.txt
-│       └── my_lib.cc
+│       └── my_lib.cpp
 └── tests
     ├── CMakeLists.txt
-    └── main.cc
+    └── main.cpp
 ```
 
 Sources go in [src/](src/), header files in [include/](include/), main programs in [app/](app),
