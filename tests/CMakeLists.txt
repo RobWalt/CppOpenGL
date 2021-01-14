@@ -3,10 +3,10 @@ add_executable(${TEST_MAIN} ${TEST_SOURCES})
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(TEST_FLAGS "/Od")
-    target_link_libraries(${TEST_MAIN} PRIVATE ${LIBRARY_NAME} gtest)
+    target_link_libraries(${TEST_MAIN} PRIVATE ${TEST_LIBS})
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     set(TEST_FLAGS "-O0;-g")
-    target_link_libraries(${TEST_MAIN} PRIVATE ${LIBRARY_NAME} gtest pthread)
+    target_link_libraries(${TEST_MAIN} PRIVATE ${TEST_LIBS} pthread)
 endif()
 
 target_compile_options(${TEST_MAIN} PUBLIC ${TEST_FLAGS})

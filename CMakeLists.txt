@@ -16,11 +16,12 @@ set(LIBRARY_BENCH   "${PROJECT}_celero")
 set(LIBRARY_GLFW    "${PROJECT}_glfw")
 set(LIBRARY_GLM     "${PROJECT}_glm")
 set(LIBRARY_GLAD    "${PROJECT}_glad")
+set(LIBRARY_GTEST   "${PROJECT}_gtest")
 set(MAIN            "${PROJECT}_Executable")
 set(TEST_MAIN       "${PROJECT}_unit_tests")
 
-set(MAIN_LIBS ${LIBRARY_NAME} ${LIBRARY_GLFW})
-
+set(MAIN_LIBS ${LIBRARY_NAME})
+set(TEST_LIBS ${LIBRARY_NAME} ${LIBRARY_GTEST})
 # Options
 option(ENABLE_WARNINGS  "Allow target_set_warnings to add warnings."    ON)
 option(USE_GCOV         "Create a GCov-enabled build."                  OFF)
