@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(PROJECT "CppTemplate")
+set(PROJECT "CppOpenGL")
 
 project("${PROJECT}_Project" VERSION 1.2.3 LANGUAGES CXX)
 
