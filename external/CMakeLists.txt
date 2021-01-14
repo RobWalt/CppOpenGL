@@ -44,7 +44,7 @@ add_library(${LIBRARY_GLAD} ALIAS glad)
 
 # gtest
 add_subdirectory(googletest)
-target_set_warnings(TARGET glad ENABLE OFF AS_ERROR OFF)
+target_set_warnings(TARGET gtest ENABLE OFF AS_ERROR OFF)
 add_library(${LIBRARY_GTEST} ALIAS gtest)
 
 

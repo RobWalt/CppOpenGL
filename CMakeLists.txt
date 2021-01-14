@@ -61,9 +61,9 @@ set(MAIN_LIBS ${MAIN_LIBS} ${OPENGL_LIBS})
 # ============ OPENGL =============
 
 # Add conan packages
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
-message("CONAN LIBS: ${CONAN_LIBS}")
+#include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+#conan_basic_setup()
+#message("CONAN LIBS: ${CONAN_LIBS}")
 
 # Add externals
 add_subdirectory(external)
