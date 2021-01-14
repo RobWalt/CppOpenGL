@@ -11,4 +11,4 @@ help:
 prepare:
 	@$(RM) build
 	@mkdir build
-	@cd build && conan install .. && cd ..
+	@cd build && conan install .. --build missing -s compiler=gcc -s compiler.version=10 -s compiler.libcxx=libstdc++11 && cd ..
