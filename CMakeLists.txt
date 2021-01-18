@@ -10,17 +10,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
 # Project/Library Names
-set(LIBRARY_NAME    "${PROJECT}_MyLib")
-set(LIBRARY_LOG     "${PROJECT}_loguru")
-set(LIBRARY_BENCH   "${PROJECT}_celero")
-set(LIBRARY_GLFW    "${PROJECT}_glfw")
-set(LIBRARY_GLM     "${PROJECT}_glm")
-set(LIBRARY_GLAD    "${PROJECT}_glad")
-set(LIBRARY_GTEST   "${PROJECT}_gtest")
-set(MAIN            "${PROJECT}_Executable")
-set(TEST_MAIN       "${PROJECT}_unit_tests")
+set(LIBRARY_NAME            "${PROJECT}_MyLib")
+set(LIBRARY_LOG             "${PROJECT}_loguru")
+set(LIBRARY_BENCH           "${PROJECT}_celero")
+set(LIBRARY_GLFW            "${PROJECT}_glfw")
+set(LIBRARY_GLM             "${PROJECT}_glm")
+set(LIBRARY_GLAD            "${PROJECT}_glad")
+set(LIBRARY_GTEST           "${PROJECT}_gtest")
+set(MAIN                    "${PROJECT}_Executable")
+set(TEST_MAIN               "${PROJECT}_unit_tests")
 
-set(MAIN_LIBS ${LIBRARY_NAME})
+set(LIBRARY_VERTEXSHADER    "${PROJECT}_vertexshader")
+set(LIBRARY_PHYSICS    "${PROJECT}_physics")
+
+set(MAIN_LIBS ${LIBRARY_NAME} ${LIBRARY_VERTEXSHADER} ${LIBRARY_PHYSICS})
 set(TEST_LIBS ${LIBRARY_NAME} ${LIBRARY_GTEST})
 # Options
 option(ENABLE_WARNINGS  "Allow target_set_warnings to add warnings."    ON)
@@ -53,7 +56,6 @@ find_package(OpenGL REQUIRED)
 if(OPENGL_FOUND)
     message("OPENGL was found!")
 endif()
-set(MAIN_LIBS ${MAIN_LIBS} OpenGL::OpenGL)
 
 # GLFW & GLM & GLAD are added via external
 set(OPENGL_LIBS OpenGL::OpenGL ${LIBRARY_GLAD} ${LIBRARY_GLFW} ${LIBRARY_GLM})

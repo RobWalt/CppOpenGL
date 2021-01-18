@@ -37,7 +37,7 @@ add_subdirectory(glm)
 target_set_warnings(TARGET glm ENABLE OFF AS_ERROR OFF)
 add_library(${LIBRARY_GLM} ALIAS glm)
 
-# GLM
+# GLAD
 add_subdirectory(glad)
 target_set_warnings(TARGET glad ENABLE OFF AS_ERROR OFF)
 add_library(${LIBRARY_GLAD} ALIAS glad)
