@@ -1,0 +1,5 @@
+add_executable(${MAIN} main.cpp)
+target_link_libraries(${MAIN} PRIVATE ${ALL_LIBS})
+target_link_libraries(${MAIN} PUBLIC ${UTILITY_LIB})
+target_include_directories(${MAIN} PUBLIC ${PROJECT_BINARY_DIR})
+target_compile_features(${MAIN} PUBLIC cxx_std_17)
