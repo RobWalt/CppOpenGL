@@ -1,0 +1,32 @@
+[submodule "EquationSolver/external/googletest"]
+	path = EquationSolver/external/googletest
+	url = https://github.com/google/googletest.git
+	
+[submodule "EquationSolver/external/glfw"]
+	path = EquationSolver/external/glfw
+	url = https://github.com/glfw/glfw.git
+
+[submodule "EquationSolver/external/glm"]
+	path = EquationSolver/external/glm
+	url = https://github.com/g-truc/glm.git
+
+[submodule "EquationSolver/external/glad"]
+	path = EquationSolver/external/glad
+	url = https://github.com/Dav1dde/glad.git
+
+[submodule "EquationSolver/external/Celero"]
+	path = EquationSolver/external/Celero
+	url = https://github.com/DigitalInBlue/Celero.git
+
+[submodule "EquationSolver/external/loguru"]
+	path = EquationSolver/external/loguru
+	url = https://github.com/emilk/loguru.git
+
+[submodule "openglHeatmap/external/glfw"]
+    path = openglHeatmap/external/glfw
+    url = https://github.com/glfw/glfw.git
+   
+[submodule "openglHeatmap/external/glew"]
+    path = openglHeatmap/external/glew
+    url = https://github.com/nigels-com/glew.git
+
