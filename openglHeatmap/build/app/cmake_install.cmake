@@ -1,4 +1,4 @@
-# Install script for directory: /home/sol/cpp_basics/openglHeatmap/app
+# Install script for directory: /home/sol/cpp_basics/CppOpenGL/openglHeatmap/app
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

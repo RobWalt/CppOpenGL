@@ -1,4 +1,4 @@
-# Install script for directory: /home/sol/cpp_basics/openglHeatmap/external/glfw/src
+# Install script for directory: /home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,6 +43,6 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/sol/cpp_basics/openglHeatmap/build/external/glfw/src/libglfw3.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/src/libglfw3.a")
 endif()
 

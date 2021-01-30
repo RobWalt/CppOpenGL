@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sol/cpp_basics/openglHeatmap
+CMAKE_SOURCE_DIR = /home/sol/cpp_basics/CppOpenGL/openglHeatmap
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sol/cpp_basics/openglHeatmap/build
+CMAKE_BINARY_DIR = /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build
 
 # Utility rule file for uninstall.
 
@@ -73,7 +73,7 @@ CMAKE_BINARY_DIR = /home/sol/cpp_basics/openglHeatmap/build
 include external/glfw/CMakeFiles/uninstall.dir/progress.make
 
 external/glfw/CMakeFiles/uninstall:
-	cd /home/sol/cpp_basics/openglHeatmap/build/external/glfw && /usr/bin/cmake -P /home/sol/cpp_basics/openglHeatmap/build/external/glfw/cmake_uninstall.cmake
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw && /usr/bin/cmake -P /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/cmake_uninstall.cmake
 
 uninstall: external/glfw/CMakeFiles/uninstall
 uninstall: external/glfw/CMakeFiles/uninstall.dir/build.make
@@ -86,10 +86,10 @@ external/glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : external/glfw/CMakeFiles/uninstall.dir/build
 
 external/glfw/CMakeFiles/uninstall.dir/clean:
-	cd /home/sol/cpp_basics/openglHeatmap/build/external/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : external/glfw/CMakeFiles/uninstall.dir/clean
 
 external/glfw/CMakeFiles/uninstall.dir/depend:
-	cd /home/sol/cpp_basics/openglHeatmap/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sol/cpp_basics/openglHeatmap /home/sol/cpp_basics/openglHeatmap/external/glfw /home/sol/cpp_basics/openglHeatmap/build /home/sol/cpp_basics/openglHeatmap/build/external/glfw /home/sol/cpp_basics/openglHeatmap/build/external/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sol/cpp_basics/CppOpenGL/openglHeatmap /home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : external/glfw/CMakeFiles/uninstall.dir/depend
 

@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sol/cpp_basics/openglHeatmap
+CMAKE_SOURCE_DIR = /home/sol/cpp_basics/CppOpenGL/openglHeatmap
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sol/cpp_basics/openglHeatmap/build
+CMAKE_BINARY_DIR = /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/utility.dir/depend.make
@@ -78,16 +78,16 @@ include src/CMakeFiles/utility.dir/flags.make
 
 src/CMakeFiles/utility.dir/utilities.cpp.o: src/CMakeFiles/utility.dir/flags.make
 src/CMakeFiles/utility.dir/utilities.cpp.o: ../src/utilities.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sol/cpp_basics/openglHeatmap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/utility.dir/utilities.cpp.o"
-	cd /home/sol/cpp_basics/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utility.dir/utilities.cpp.o -c /home/sol/cpp_basics/openglHeatmap/src/utilities.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/utility.dir/utilities.cpp.o"
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utility.dir/utilities.cpp.o -c /home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.cpp
 
 src/CMakeFiles/utility.dir/utilities.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utility.dir/utilities.cpp.i"
-	cd /home/sol/cpp_basics/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sol/cpp_basics/openglHeatmap/src/utilities.cpp > CMakeFiles/utility.dir/utilities.cpp.i
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.cpp > CMakeFiles/utility.dir/utilities.cpp.i
 
 src/CMakeFiles/utility.dir/utilities.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utility.dir/utilities.cpp.s"
-	cd /home/sol/cpp_basics/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sol/cpp_basics/openglHeatmap/src/utilities.cpp -o CMakeFiles/utility.dir/utilities.cpp.s
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.cpp -o CMakeFiles/utility.dir/utilities.cpp.s
 
 utility: src/CMakeFiles/utility.dir/utilities.cpp.o
 utility: src/CMakeFiles/utility.dir/build.make
@@ -100,10 +100,10 @@ src/CMakeFiles/utility.dir/build: utility
 .PHONY : src/CMakeFiles/utility.dir/build
 
 src/CMakeFiles/utility.dir/clean:
-	cd /home/sol/cpp_basics/openglHeatmap/build/src && $(CMAKE_COMMAND) -P CMakeFiles/utility.dir/cmake_clean.cmake
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src && $(CMAKE_COMMAND) -P CMakeFiles/utility.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/utility.dir/clean
 
 src/CMakeFiles/utility.dir/depend:
-	cd /home/sol/cpp_basics/openglHeatmap/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sol/cpp_basics/openglHeatmap /home/sol/cpp_basics/openglHeatmap/src /home/sol/cpp_basics/openglHeatmap/build /home/sol/cpp_basics/openglHeatmap/build/src /home/sol/cpp_basics/openglHeatmap/build/src/CMakeFiles/utility.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/sol/cpp_basics/CppOpenGL/openglHeatmap /home/sol/cpp_basics/CppOpenGL/openglHeatmap/src /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src /home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src/CMakeFiles/utility.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/utility.dir/depend
 

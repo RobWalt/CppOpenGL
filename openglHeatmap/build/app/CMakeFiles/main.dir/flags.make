@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sol/cpp_basics/openglHeatmap/external/glfw/include/GLFW -I/home/sol/cpp_basics/openglHeatmap/build -I/home/sol/cpp_basics/openglHeatmap/external/glfw/include -I/home/sol/cpp_basics/openglHeatmap/include
+CXX_INCLUDES = -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw/include/GLFW -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw/include -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/include
 
 CXX_FLAGS = -std=c++17
 

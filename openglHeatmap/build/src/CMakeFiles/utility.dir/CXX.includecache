@@ -14,7 +14,7 @@ GL/glew.h
 GLFW/glfw3.h
 -
 
-/home/sol/cpp_basics/openglHeatmap/src/utilities.cpp
+/home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.cpp
 GL/glew.h
 -
 GLFW/glfw3.h
@@ -28,5 +28,5 @@ string
 iostream
 -
 utilities.hpp
-/home/sol/cpp_basics/openglHeatmap/src/utilities.hpp
+/home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.hpp
 

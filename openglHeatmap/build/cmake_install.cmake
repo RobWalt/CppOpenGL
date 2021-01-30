@@ -1,4 +1,4 @@
-# Install script for directory: /home/sol/cpp_basics/openglHeatmap
+# Install script for directory: /home/sol/cpp_basics/CppOpenGL/openglHeatmap
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,9 +44,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/sol/cpp_basics/openglHeatmap/build/external/glfw/cmake_install.cmake")
-  include("/home/sol/cpp_basics/openglHeatmap/build/src/cmake_install.cmake")
-  include("/home/sol/cpp_basics/openglHeatmap/build/app/cmake_install.cmake")
+  include("/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/cmake_install.cmake")
+  include("/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src/cmake_install.cmake")
+  include("/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/app/cmake_install.cmake")
 
 endif()
 
@@ -58,5 +58,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sol/cpp_basics/openglHeatmap/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

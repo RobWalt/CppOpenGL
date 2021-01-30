@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/sol/cpp_basics/openglHeatmap/build/external/glfw/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"/home/sol/cpp_basics/openglHeatmap/build/external/glfw/install_manifest.txt\"")
+if (NOT EXISTS "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "/home/sol/cpp_basics/openglHeatmap/build/external/glfw/install_manifest.txt" files)
+file(READ "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

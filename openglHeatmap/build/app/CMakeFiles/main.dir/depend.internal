@@ -4,5 +4,5 @@
 app/CMakeFiles/main.dir/main.cpp.o
  ../external/glfw/include/GLFW/glfw3.h
  ../include/utilities.hpp
- /home/sol/cpp_basics/openglHeatmap/app/main.cpp
+ /home/sol/cpp_basics/CppOpenGL/openglHeatmap/app/main.cpp
  project_variables.h

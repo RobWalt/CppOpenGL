@@ -58,7 +58,7 @@ GL/glew.h
 GLFW/glfw3.h
 -
 
-/home/sol/cpp_basics/openglHeatmap/app/main.cpp
+/home/sol/cpp_basics/CppOpenGL/openglHeatmap/app/main.cpp
 stdio.h
 -
 stdlib.h
@@ -74,9 +74,9 @@ GL/glew.h
 GLFW/glfw3.h
 -
 utilities.hpp
-/home/sol/cpp_basics/openglHeatmap/app/utilities.hpp
+/home/sol/cpp_basics/CppOpenGL/openglHeatmap/app/utilities.hpp
 project_variables.h
-/home/sol/cpp_basics/openglHeatmap/app/project_variables.h
+/home/sol/cpp_basics/CppOpenGL/openglHeatmap/app/project_variables.h
 
 project_variables.h
 

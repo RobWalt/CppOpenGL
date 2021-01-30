@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/sol/cpp_basics/openglHeatmap/external/glfw/include -I/home/sol/cpp_basics/openglHeatmap/external/glfw/src -I/home/sol/cpp_basics/openglHeatmap/build/external/glfw/src
+C_INCLUDES = -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw/include -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/external/glfw/src -I/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/external/glfw/src
 
 C_FLAGS = -fPIC -Wall -std=c99
 

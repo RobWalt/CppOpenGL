@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sol/cpp_basics/openglHeatmap/src/utilities.cpp" "/home/sol/cpp_basics/openglHeatmap/build/src/CMakeFiles/utility.dir/utilities.cpp.o"
+  "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/src/utilities.cpp" "/home/sol/cpp_basics/CppOpenGL/openglHeatmap/build/src/CMakeFiles/utility.dir/utilities.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
