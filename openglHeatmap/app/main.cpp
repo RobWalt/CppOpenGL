@@ -11,6 +11,7 @@
 #include <GLFW/glfw3.h>
 
 #include "utilities.hpp"
+#include "glhelper.hpp"
 #include "project_variables.h"
 
 #include <array>
@@ -18,8 +19,8 @@
 // manual set parameters
 constexpr unsigned int  my_color_channels = 3;
 constexpr unsigned int  my_spacial_dimensions = 3;
-constexpr unsigned int  my_grid_width = 20;
-constexpr unsigned int  my_grid_height = 20;
+constexpr unsigned int  my_grid_width = 21;
+constexpr unsigned int  my_grid_height = 21;
 constexpr float 		my_x_step_size = 0.1f;
 constexpr float 		my_y_step_size = 0.1f;
 
@@ -29,33 +30,6 @@ constexpr unsigned int my_amount_of_upper_triangles = my_amount_of_vertices - my
 constexpr unsigned int my_amount_of_lower_triangles = my_amount_of_upper_triangles;
 constexpr unsigned int my_vertex_length = my_spacial_dimensions + my_color_channels;
 
-template <typename T, int amount_of_vertices, int spacial_dimensions, int color_channels>
-auto CreateInterlacedArray(std::array<T, amount_of_vertices * spacial_dimensions> position_array, std::array<T, amount_of_vertices * color_channels> color_array)  
-{
-	std::array<T, position_array.size() + color_array.size()> interlaced_array;
-
-	auto position_iterator = position_array.begin();
-	auto color_iterator = color_array.begin();
-	auto interlaced_iterator = interlaced_array.begin();
-
-	for (int i = 0; i < amount_of_vertices; ++i)
-	{
-		for (int j=0; j < spacial_dimensions; ++j)
-		{
-			*interlaced_iterator = *position_iterator;
-			position_iterator++;
-			interlaced_iterator++;
-		}
-		for (int j=0; j < color_channels; ++j)
-		{
-			*interlaced_iterator = *color_iterator;
-			color_iterator++;
-			interlaced_iterator++;
-		}
-	}
-
-	return interlaced_array;
-}
 
 // Settings.
 const unsigned int width = 800;
@@ -109,61 +83,26 @@ int main()
 
 	// GPU data part II
 
-	std::array<unsigned int, my_amount_of_upper_triangles * 3> upper_triangle_indices;
-	auto upper_triangle_index_iterator = upper_triangle_indices.begin();
+	auto upper_triangle_indices = CreateUpperTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
+	auto positions = CreatePositionArray<float, my_amount_of_vertices, my_spacial_dimensions>(my_grid_width, my_grid_height, my_x_step_size, my_y_step_size);
 
-	for (int j = 0; j < my_grid_height-1; ++j)
-	{
-		for(int i = 0; i < my_grid_width-1; ++i)
-		{
-			*upper_triangle_index_iterator = i + j * my_grid_width;
-			upper_triangle_index_iterator++;
-			*upper_triangle_index_iterator = i + j * my_grid_width + 1;
-			upper_triangle_index_iterator++;
-			*upper_triangle_index_iterator = i + (j+1) * my_grid_width;
-			upper_triangle_index_iterator++;
-		}
-	}
-
-	std::array<float, my_amount_of_vertices * my_spacial_dimensions> positions;  
-	auto position_iterator = positions.begin();
+	std::array<float, my_amount_of_vertices * my_color_channels> colors;  
+	auto color_iterator = colors.begin();
 
 	for (int j = 0; j < my_grid_height; ++j)
 	{
 		for(int i = 0; i < my_grid_width; ++i)
 		{
-			*position_iterator = -1.0f + i * my_x_step_size;
-			position_iterator++;
-			*position_iterator = 1.0f - j * my_y_step_size;
-			position_iterator++;
-			*position_iterator = 0.0f;
-			position_iterator++;
+			*color_iterator = i * my_x_step_size / 2;
+			color_iterator++;
+			*color_iterator = j * my_y_step_size / 2;
+			color_iterator++;
+			*color_iterator = 0.0f;
+			color_iterator++;
 		}
 	}
 
-	std::array<float, my_amount_of_vertices * my_color_channels> colors = {
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-	};
-
 	auto interlaced_triangle_vertices = CreateInterlacedArray<float, my_amount_of_vertices, my_spacial_dimensions, my_color_channels>(positions, colors);
-
-	//for (auto& value : upper_triangle_indices)
-	//{
-	//	std::cout << value << " ";
-	//}
-	//std::cout << "\n";
-	//for (auto& value : positions)
-	//{
-	//	std::cout << value << " ";
-	//}
 
 	unsigned int VBO, VAO, EBO;
 

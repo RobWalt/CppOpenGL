@@ -14,6 +14,7 @@ configure_file("${PROJECT_SOURCE_DIR}/include/project_variables.h.in"
 # Project/Library names
 set(MAIN main)
 set(UTILITY_LIB utility)
+set(GLHELPER_LIB glhelper)
 
 find_package(OpenGL REQUIRED)
 
