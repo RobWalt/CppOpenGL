@@ -3,4 +3,4 @@
 
 src/CMakeFiles/color.dir/color_palette.cc.o
  ../include/color_palette.h
- /home/sol/cpp_basics/openglColor/src/color_palette.cc
+ /home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.cc

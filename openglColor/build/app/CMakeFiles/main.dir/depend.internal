@@ -7,5 +7,5 @@ app/CMakeFiles/main.dir/main.cpp.o
  ../include/color_palette.h
  ../include/shader.hpp
  ../include/utilities.h
- /home/sol/cpp_basics/openglColor/app/main.cpp
+ /home/sol/cpp_basics/CppOpenGL/openglColor/app/main.cpp
  variables.h

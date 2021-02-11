@@ -63,10 +63,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sol/cpp_basics/openglColor
+CMAKE_SOURCE_DIR = /home/sol/cpp_basics/CppOpenGL/openglColor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sol/cpp_basics/openglColor/build
+CMAKE_BINARY_DIR = /home/sol/cpp_basics/CppOpenGL/openglColor/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -138,14 +138,14 @@ src/clean: src/CMakeFiles/shader.dir/clean
 CMakeFiles/glad.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/openglColor/build/CMakeFiles --progress-num=3,4 "Built target glad"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles --progress-num=3,4 "Built target glad"
 .PHONY : CMakeFiles/glad.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/glad.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/glad.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : CMakeFiles/glad.dir/rule
 
 # Convenience name for target.
@@ -165,14 +165,14 @@ CMakeFiles/glad.dir/clean:
 src/CMakeFiles/utilities.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/openglColor/build/CMakeFiles --progress-num=9,10 "Built target utilities"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles --progress-num=9,10 "Built target utilities"
 .PHONY : src/CMakeFiles/utilities.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/utilities.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/utilities.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/utilities.dir/rule
 
 # Convenience name for target.
@@ -192,14 +192,14 @@ src/CMakeFiles/utilities.dir/clean:
 src/CMakeFiles/color.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/openglColor/build/CMakeFiles --progress-num=1,2 "Built target color"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles --progress-num=1,2 "Built target color"
 .PHONY : src/CMakeFiles/color.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/color.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/color.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/color.dir/rule
 
 # Convenience name for target.
@@ -219,14 +219,14 @@ src/CMakeFiles/color.dir/clean:
 src/CMakeFiles/shader.dir/all: CMakeFiles/glad.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/openglColor/build/CMakeFiles --progress-num=7,8 "Built target shader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles --progress-num=7,8 "Built target shader"
 .PHONY : src/CMakeFiles/shader.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/shader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/shader.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/shader.dir/rule
 
 # Convenience name for target.
@@ -248,14 +248,14 @@ app/CMakeFiles/main.dir/all: src/CMakeFiles/color.dir/all
 app/CMakeFiles/main.dir/all: src/CMakeFiles/shader.dir/all
 	$(MAKE) $(MAKESILENT) -f app/CMakeFiles/main.dir/build.make app/CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f app/CMakeFiles/main.dir/build.make app/CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/openglColor/build/CMakeFiles --progress-num=5,6 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles --progress-num=5,6 "Built target main"
 .PHONY : app/CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 app/CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 app/CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : app/CMakeFiles/main.dir/rule
 
 # Convenience name for target.

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sol/cpp_basics/openglColor/src/color_palette.cc" "/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/color.dir/color_palette.cc.o"
+  "/home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.cc" "/home/sol/cpp_basics/CppOpenGL/openglColor/build/src/CMakeFiles/color.dir/color_palette.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

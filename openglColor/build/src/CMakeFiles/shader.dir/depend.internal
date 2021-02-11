@@ -5,4 +5,4 @@ src/CMakeFiles/shader.dir/shader.cpp.o
  ../external/glad/include/KHR/khrplatform.h
  ../external/glad/include/glad/glad.h
  ../include/shader.hpp
- /home/sol/cpp_basics/openglColor/src/shader.cpp
+ /home/sol/cpp_basics/CppOpenGL/openglColor/src/shader.cpp

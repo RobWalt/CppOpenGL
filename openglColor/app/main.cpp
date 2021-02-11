@@ -116,7 +116,7 @@ int main()
 	glGenTextures(1, &textures["square"]);
 	glBindTexture(GL_TEXTURE_1D, textures["square"]);
 
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_TEXTURE_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

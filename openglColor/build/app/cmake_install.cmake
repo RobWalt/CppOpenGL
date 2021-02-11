@@ -1,4 +1,4 @@
-# Install script for directory: /home/sol/cpp_basics/openglColor/app
+# Install script for directory: /home/sol/cpp_basics/CppOpenGL/openglColor/app
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sol/cpp_basics/openglColor
+CMAKE_SOURCE_DIR = /home/sol/cpp_basics/CppOpenGL/openglColor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sol/cpp_basics/openglColor/build
+CMAKE_BINARY_DIR = /home/sol/cpp_basics/CppOpenGL/openglColor/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,14 +99,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/sol/cpp_basics/openglColor/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles /home/sol/cpp_basics/openglColor/build/src//CMakeFiles/progress.marks
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/openglColor/build/CMakeFiles 0
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles /home/sol/cpp_basics/CppOpenGL/openglColor/build/src//CMakeFiles/progress.marks
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sol/cpp_basics/CppOpenGL/openglColor/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -116,22 +116,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/sol/cpp_basics/openglColor/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/utilities.dir/rule:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/utilities.dir/rule
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/utilities.dir/rule
 .PHONY : src/CMakeFiles/utilities.dir/rule
 
 # Convenience name for target.
@@ -141,12 +141,12 @@ utilities: src/CMakeFiles/utilities.dir/rule
 
 # fast build rule for target.
 utilities/fast:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/build
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/build
 .PHONY : utilities/fast
 
 # Convenience name for target.
 src/CMakeFiles/color.dir/rule:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/color.dir/rule
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/color.dir/rule
 .PHONY : src/CMakeFiles/color.dir/rule
 
 # Convenience name for target.
@@ -156,12 +156,12 @@ color: src/CMakeFiles/color.dir/rule
 
 # fast build rule for target.
 color/fast:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/build
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/build
 .PHONY : color/fast
 
 # Convenience name for target.
 src/CMakeFiles/shader.dir/rule:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/shader.dir/rule
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/shader.dir/rule
 .PHONY : src/CMakeFiles/shader.dir/rule
 
 # Convenience name for target.
@@ -171,7 +171,7 @@ shader: src/CMakeFiles/shader.dir/rule
 
 # fast build rule for target.
 shader/fast:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/build
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/build
 .PHONY : shader/fast
 
 color_palette.o: color_palette.cc.o
@@ -180,7 +180,7 @@ color_palette.o: color_palette.cc.o
 
 # target to build an object file
 color_palette.cc.o:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.o
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.o
 .PHONY : color_palette.cc.o
 
 color_palette.i: color_palette.cc.i
@@ -189,7 +189,7 @@ color_palette.i: color_palette.cc.i
 
 # target to preprocess a source file
 color_palette.cc.i:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.i
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.i
 .PHONY : color_palette.cc.i
 
 color_palette.s: color_palette.cc.s
@@ -198,7 +198,7 @@ color_palette.s: color_palette.cc.s
 
 # target to generate assembly for a file
 color_palette.cc.s:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.s
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/color.dir/build.make src/CMakeFiles/color.dir/color_palette.cc.s
 .PHONY : color_palette.cc.s
 
 shader.o: shader.cpp.o
@@ -207,7 +207,7 @@ shader.o: shader.cpp.o
 
 # target to build an object file
 shader.cpp.o:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.o
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.o
 .PHONY : shader.cpp.o
 
 shader.i: shader.cpp.i
@@ -216,7 +216,7 @@ shader.i: shader.cpp.i
 
 # target to preprocess a source file
 shader.cpp.i:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.i
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.i
 .PHONY : shader.cpp.i
 
 shader.s: shader.cpp.s
@@ -225,7 +225,7 @@ shader.s: shader.cpp.s
 
 # target to generate assembly for a file
 shader.cpp.s:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.s
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/shader.dir/build.make src/CMakeFiles/shader.dir/shader.cpp.s
 .PHONY : shader.cpp.s
 
 utilities.o: utilities.cpp.o
@@ -234,7 +234,7 @@ utilities.o: utilities.cpp.o
 
 # target to build an object file
 utilities.cpp.o:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.o
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.o
 .PHONY : utilities.cpp.o
 
 utilities.i: utilities.cpp.i
@@ -243,7 +243,7 @@ utilities.i: utilities.cpp.i
 
 # target to preprocess a source file
 utilities.cpp.i:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.i
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.i
 .PHONY : utilities.cpp.i
 
 utilities.s: utilities.cpp.s
@@ -252,7 +252,7 @@ utilities.s: utilities.cpp.s
 
 # target to generate assembly for a file
 utilities.cpp.s:
-	cd /home/sol/cpp_basics/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.s
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/utilities.dir/build.make src/CMakeFiles/utilities.dir/utilities.cpp.s
 .PHONY : utilities.cpp.s
 
 # Help Target
@@ -286,6 +286,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/sol/cpp_basics/openglColor/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/sol/cpp_basics/CppOpenGL/openglColor/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

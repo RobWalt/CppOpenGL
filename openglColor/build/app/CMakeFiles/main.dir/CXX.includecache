@@ -48,7 +48,7 @@ iostream
 stdexcept
 -
 
-/home/sol/cpp_basics/openglColor/app/main.cpp
+/home/sol/cpp_basics/CppOpenGL/openglColor/app/main.cpp
 iostream
 -
 array
@@ -68,13 +68,13 @@ glad/glad.h
 GLFW/glfw3.h
 -
 shader.hpp
-/home/sol/cpp_basics/openglColor/app/shader.hpp
+/home/sol/cpp_basics/CppOpenGL/openglColor/app/shader.hpp
 color_palette.h
-/home/sol/cpp_basics/openglColor/app/color_palette.h
+/home/sol/cpp_basics/CppOpenGL/openglColor/app/color_palette.h
 utilities.h
-/home/sol/cpp_basics/openglColor/app/utilities.h
+/home/sol/cpp_basics/CppOpenGL/openglColor/app/utilities.h
 variables.h
-/home/sol/cpp_basics/openglColor/app/variables.h
+/home/sol/cpp_basics/CppOpenGL/openglColor/app/variables.h
 
 variables.h
 

@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/sol/cpp_basics/openglColor/external/glad/include
+C_INCLUDES = -I/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/include
 
 C_FLAGS = 
 

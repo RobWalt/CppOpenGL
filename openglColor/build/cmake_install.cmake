@@ -1,4 +1,4 @@
-# Install script for directory: /home/sol/cpp_basics/openglColor
+# Install script for directory: /home/sol/cpp_basics/CppOpenGL/openglColor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/sol/cpp_basics/openglColor/build/src/cmake_install.cmake")
-  include("/home/sol/cpp_basics/openglColor/build/app/cmake_install.cmake")
+  include("/home/sol/cpp_basics/CppOpenGL/openglColor/build/src/cmake_install.cmake")
+  include("/home/sol/cpp_basics/CppOpenGL/openglColor/build/app/cmake_install.cmake")
 
 endif()
 
@@ -57,5 +57,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sol/cpp_basics/openglColor/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sol/cpp_basics/CppOpenGL/openglColor/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

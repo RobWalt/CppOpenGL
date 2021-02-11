@@ -26,7 +26,7 @@ glad/glad.h
 GLFW/glfw3.h
 -
 
-/home/sol/cpp_basics/openglColor/src/shader.cpp
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/shader.cpp
 glad/glad.h
 -
 GLFW/glfw3.h
@@ -40,5 +40,5 @@ string
 iostream
 -
 shader.hpp
-/home/sol/cpp_basics/openglColor/src/shader.hpp
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/shader.hpp
 

@@ -20,7 +20,7 @@ stdexcept
 filesystem
 -
 
-/home/sol/cpp_basics/openglColor/src/color_palette.cc
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.cc
 stdlib.h
 -
 string
@@ -40,5 +40,5 @@ iostream
 fstream
 -
 color_palette.h
-/home/sol/cpp_basics/openglColor/src/color_palette.h
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.h
 

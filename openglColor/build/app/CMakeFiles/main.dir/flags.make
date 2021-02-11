@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sol/cpp_basics/openglColor/external/glad/include -I/home/sol/cpp_basics/openglColor/build -I/home/sol/cpp_basics/openglColor/include
+CXX_INCLUDES = -I/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/include -I/home/sol/cpp_basics/CppOpenGL/openglColor/build -I/home/sol/cpp_basics/CppOpenGL/openglColor/include
 
 CXX_FLAGS = -std=c++17
 

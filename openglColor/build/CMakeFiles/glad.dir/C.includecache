@@ -18,7 +18,7 @@ stdint.h
 KHR/khrplatform.h
 -
 
-/home/sol/cpp_basics/openglColor/external/glad/src/glad.c
+/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/src/glad.c
 stdio.h
 -
 stdlib.h

@@ -1,27 +1,27 @@
 [
 {
-  "directory": "/home/sol/cpp_basics/openglColor/build",
-  "command": "/usr/bin/cc  -I/home/sol/cpp_basics/openglColor/external/glad/include  -o CMakeFiles/glad.dir/external/glad/src/glad.c.o -c /home/sol/cpp_basics/openglColor/external/glad/src/glad.c",
-  "file": "/home/sol/cpp_basics/openglColor/external/glad/src/glad.c"
+  "directory": "/home/sol/cpp_basics/CppOpenGL/openglColor/build",
+  "command": "/usr/bin/cc  -I/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/include  -o CMakeFiles/glad.dir/external/glad/src/glad.c.o -c /home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/src/glad.c",
+  "file": "/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/src/glad.c"
 },
 {
-  "directory": "/home/sol/cpp_basics/openglColor/build/src",
-  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/openglColor/include -std=c++17 -o CMakeFiles/utilities.dir/utilities.cpp.o -c /home/sol/cpp_basics/openglColor/src/utilities.cpp",
-  "file": "/home/sol/cpp_basics/openglColor/src/utilities.cpp"
+  "directory": "/home/sol/cpp_basics/CppOpenGL/openglColor/build/src",
+  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/CppOpenGL/openglColor/include -std=c++17 -o CMakeFiles/utilities.dir/utilities.cpp.o -c /home/sol/cpp_basics/CppOpenGL/openglColor/src/utilities.cpp",
+  "file": "/home/sol/cpp_basics/CppOpenGL/openglColor/src/utilities.cpp"
 },
 {
-  "directory": "/home/sol/cpp_basics/openglColor/build/src",
-  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/openglColor/include -std=c++17 -o CMakeFiles/color.dir/color_palette.cc.o -c /home/sol/cpp_basics/openglColor/src/color_palette.cc",
-  "file": "/home/sol/cpp_basics/openglColor/src/color_palette.cc"
+  "directory": "/home/sol/cpp_basics/CppOpenGL/openglColor/build/src",
+  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/CppOpenGL/openglColor/include -std=c++17 -o CMakeFiles/color.dir/color_palette.cc.o -c /home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.cc",
+  "file": "/home/sol/cpp_basics/CppOpenGL/openglColor/src/color_palette.cc"
 },
 {
-  "directory": "/home/sol/cpp_basics/openglColor/build/src",
-  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/openglColor/include -I/home/sol/cpp_basics/openglColor/external/glad/include -std=c++17 -o CMakeFiles/shader.dir/shader.cpp.o -c /home/sol/cpp_basics/openglColor/src/shader.cpp",
-  "file": "/home/sol/cpp_basics/openglColor/src/shader.cpp"
+  "directory": "/home/sol/cpp_basics/CppOpenGL/openglColor/build/src",
+  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/CppOpenGL/openglColor/include -I/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/include -std=c++17 -o CMakeFiles/shader.dir/shader.cpp.o -c /home/sol/cpp_basics/CppOpenGL/openglColor/src/shader.cpp",
+  "file": "/home/sol/cpp_basics/CppOpenGL/openglColor/src/shader.cpp"
 },
 {
-  "directory": "/home/sol/cpp_basics/openglColor/build/app",
-  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/openglColor/external/glad/include -I/home/sol/cpp_basics/openglColor/build -I/home/sol/cpp_basics/openglColor/include -std=c++17 -o CMakeFiles/main.dir/main.cpp.o -c /home/sol/cpp_basics/openglColor/app/main.cpp",
-  "file": "/home/sol/cpp_basics/openglColor/app/main.cpp"
+  "directory": "/home/sol/cpp_basics/CppOpenGL/openglColor/build/app",
+  "command": "/usr/bin/c++  -I/home/sol/cpp_basics/CppOpenGL/openglColor/external/glad/include -I/home/sol/cpp_basics/CppOpenGL/openglColor/build -I/home/sol/cpp_basics/CppOpenGL/openglColor/include -std=c++17 -o CMakeFiles/main.dir/main.cpp.o -c /home/sol/cpp_basics/CppOpenGL/openglColor/app/main.cpp",
+  "file": "/home/sol/cpp_basics/CppOpenGL/openglColor/app/main.cpp"
 }
 ]

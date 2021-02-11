@@ -14,9 +14,9 @@ iostream
 stdexcept
 -
 
-/home/sol/cpp_basics/openglColor/src/utilities.cpp
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/utilities.cpp
 array
 -
 utilities.h
-/home/sol/cpp_basics/openglColor/src/utilities.h
+/home/sol/cpp_basics/CppOpenGL/openglColor/src/utilities.h
 
