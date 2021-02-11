@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../external/glad/include/KHR/khrplatform.h
+stdint.h
+-
+inttypes.h
+-
+stdint.h
+-
+
+../external/glad/include/glad/glad.h
+KHR/khrplatform.h
+-
+
+../include/shader.hpp
+filesystem
+-
+glad/glad.h
+-
+GLFW/glfw3.h
+-
+
+/home/sol/cpp_basics/openglColor/src/shader.cpp
+glad/glad.h
+-
+GLFW/glfw3.h
+-
+filesystem
+-
+fstream
+-
+string
+-
+iostream
+-
+shader.hpp
+/home/sol/cpp_basics/openglColor/src/shader.hpp
+

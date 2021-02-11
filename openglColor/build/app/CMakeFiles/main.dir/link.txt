@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  ../libglad.a ../src/libshader.a ../src/libcolor.a ../libglad.a -ldl /usr/lib/libglfw.so.3.3 

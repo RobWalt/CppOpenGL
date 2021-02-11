@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/utilities.h
+array
+-
+iostream
+-
+stdexcept
+-
+
+/home/sol/cpp_basics/openglColor/src/utilities.cpp
+array
+-
+utilities.h
+/home/sol/cpp_basics/openglColor/src/utilities.h
+

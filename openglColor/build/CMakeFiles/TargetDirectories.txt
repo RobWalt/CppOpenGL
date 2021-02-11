@@ -1,0 +1,11 @@
+/home/sol/cpp_basics/openglColor/build/CMakeFiles/rebuild_cache.dir
+/home/sol/cpp_basics/openglColor/build/CMakeFiles/edit_cache.dir
+/home/sol/cpp_basics/openglColor/build/CMakeFiles/glad.dir
+/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/utilities.dir
+/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/edit_cache.dir
+/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/color.dir
+/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/rebuild_cache.dir
+/home/sol/cpp_basics/openglColor/build/src/CMakeFiles/shader.dir
+/home/sol/cpp_basics/openglColor/build/app/CMakeFiles/rebuild_cache.dir
+/home/sol/cpp_basics/openglColor/build/app/CMakeFiles/edit_cache.dir
+/home/sol/cpp_basics/openglColor/build/app/CMakeFiles/main.dir
