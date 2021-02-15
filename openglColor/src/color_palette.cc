@@ -89,7 +89,7 @@ ColorPalette::ColorPalette(const std::filesystem::path & color_palette_path)
 	{
 		throw std::runtime_error("File could not be opened. Does it exist?");
 	} else {
-		std::string line{}; 
+		 std::string line{}; 
 
 		while (std::getline(palette_file,line))
 		{
@@ -98,6 +98,21 @@ ColorPalette::ColorPalette(const std::filesystem::path & color_palette_path)
 			data.push_back(col);
 		}
 	} // close file
+}
+
+
+unsigned char * ColorPalette::c_array()
+{
+	unsigned char * result =  (unsigned char*) malloc( sizeof(unsigned char) * 3 * data.size() );
+
+	for (auto i = 0; i < data.size(); i++)
+	{
+					result[i*3] = data[i].r;
+					result[i*3 + 1] = data[i].g;
+					result[i*3 + 2] = data[i].b;
+	}
+
+	return result;
 }
 
 

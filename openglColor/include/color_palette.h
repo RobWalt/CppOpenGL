@@ -29,6 +29,7 @@ class ColorPalette
 	public:
 		std::vector<color> data;
 		void ToCArray(unsigned char* result);
+		unsigned char * c_array();
 		ColorPalette(const std::filesystem::path & file_path);
 	private:
 };

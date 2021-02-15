@@ -120,11 +120,12 @@ int main()
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+	// unsigned char * color_palette_c_array =  
+	// 									(unsigned char*) malloc( 
+	// 									sizeof(unsigned char)*3*color_palette.data.size() );
+	// color_palette.ToCArray(color_palette_c_array);
 
-	unsigned char * color_palette_c_array =  
-										(unsigned char*) malloc( 
-										sizeof(unsigned char)*3*color_palette.data.size() );
-	color_palette.ToCArray(color_palette_c_array);
+	auto color_palette_c_array = color_palette.c_array();
 
 	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, color_palette.data.size(), 0, GL_RGB, GL_UNSIGNED_BYTE, color_palette_c_array);
 	glGenerateMipmap(GL_TEXTURE_1D);
