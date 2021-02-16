@@ -18,7 +18,7 @@
 #include <array>
 
 // manual set parameters
-constexpr unsigned int  my_color_channels = 3;
+constexpr unsigned int  my_color_channels = 1;
 constexpr unsigned int  my_spacial_dimensions = 3;
 constexpr unsigned int  my_grid_width = 101;
 constexpr unsigned int  my_grid_height = 101;
@@ -30,7 +30,6 @@ constexpr unsigned int my_amount_of_vertices = my_grid_width * my_grid_height;
 constexpr unsigned int my_amount_of_upper_triangles = my_amount_of_vertices - my_grid_height - my_grid_width + 1;
 constexpr unsigned int my_amount_of_lower_triangles = my_amount_of_upper_triangles;
 constexpr unsigned int my_amount_of_triangles = my_amount_of_upper_triangles + my_amount_of_lower_triangles;
-constexpr unsigned int my_vertex_length = my_spacial_dimensions + my_color_channels;
 
 
 // Settings.
@@ -83,8 +82,12 @@ int main()
 	     0.0f,  0.5f, 0.0f,
 	};  
 
-	// GPU data part II
+	constexpr float dx = 1.0f;
+	constexpr float c = 1.0f;
+	constexpr float dt = 0.1 * (dx * dx) / (c * c);
+	DifferentialEquation DEQ(c, dx, dt);
 
+	// GPU data part II
 	auto upper_triangle_indices = CreateUpperTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
 	auto lower_triangle_indices = CreateLowerTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
 
@@ -92,23 +95,7 @@ int main()
 
 	auto positions = CreatePositionArray<float, my_amount_of_vertices, my_spacial_dimensions>(my_grid_width, my_grid_height, my_x_step_size, my_y_step_size);
 
-	std::array<float, my_amount_of_vertices * my_color_channels> colors;  
-	auto color_iterator = colors.begin();
-
-	for (int j = 0; j < my_grid_height; ++j)
-	{
-		for(int i = 0; i < my_grid_width; ++i)
-		{
-			*color_iterator = i * my_x_step_size / 2;
-			color_iterator++;
-			*color_iterator = j * my_y_step_size / 2;
-			color_iterator++;
-			*color_iterator = 0.0f;
-			color_iterator++;
-		}
-	}
-
-	auto interlaced_triangle_vertices = InterleaveArrays(my_amount_of_vertices, positions, colors);
+	auto colors = DEQ.get_current_solution();
 
 	unsigned int VBO, VAO, EBO;
 
@@ -120,21 +107,26 @@ int main()
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(interlaced_triangle_vertices), interlaced_triangle_vertices.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(positions) + sizeof(colors), NULL, GL_STATIC_DRAW);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(positions), positions.data());
+	glBufferSubData(GL_ARRAY_BUFFER, sizeof(positions), sizeof(colors), colors.data());
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(all_triangle_indices), all_triangle_indices.data(), GL_STATIC_DRAW);
 
 	// position attribute
-	glVertexAttribPointer(0, my_spacial_dimensions, GL_FLOAT, GL_FALSE, my_vertex_length * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, my_spacial_dimensions, GL_FLOAT, GL_FALSE, 0, (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, my_color_channels, GL_FLOAT, GL_FALSE, my_vertex_length * sizeof(float), (void*)(my_spacial_dimensions * sizeof(float)));
+	glVertexAttribPointer(1, my_color_channels, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(positions)));
 	glEnableVertexAttribArray(1);
 
 	std::string vertex_shader_path = SHADER_DIR "/vertex_shader.glsl";
 	std::string fragment_shader_path = SHADER_DIR "/fragment_shader.glsl";
 	ShaderSourceCode our_shader(vertex_shader_path, fragment_shader_path);
+
+	auto accumulated_time = 0.0f;
+	auto last_time = 0.0f;
 
 	while(!glfwWindowShouldClose(window))
 	{
@@ -149,6 +141,20 @@ int main()
 		our_shader.use();
 
 		glBindVertexArray(VAO);
+
+		auto current_time = glfwGetTime();
+
+		auto time_passed_this_iteration = current_time - last_time;
+		accumulated_time += time_passed_this_iteration;
+		last_time = current_time;
+		if (accumulated_time >= dt)
+		{
+			DEQ.solver_step();
+			colors = DEQ.get_current_solution();
+			glBufferSubData(GL_ARRAY_BUFFER, sizeof(positions), sizeof(colors), colors.data());
+			accumulated_time = 0.0f;
+		}
+
 		glDrawElements(GL_TRIANGLES, 3*my_amount_of_triangles, GL_UNSIGNED_INT, 0);
 
 		// Poll events
