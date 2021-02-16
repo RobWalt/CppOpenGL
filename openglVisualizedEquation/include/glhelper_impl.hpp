@@ -1,31 +1,41 @@
 #include <array>
+#include <stdexcept>
 
-template <typename T, int amount_of_vertices, int spacial_dimensions, int color_channels>
-auto CreateInterlacedArray(std::array<T, amount_of_vertices * spacial_dimensions> position_array, std::array<T, amount_of_vertices * color_channels> color_array)  
+template <typename Type, std::size_t size1, std::size_t size2>
+auto InterleaveArrays(const std::size_t & number_of_vertices, const std::array<Type, size1> & array1, const std::array<Type, size2> & array2)
 {
-	std::array<T, position_array.size() + color_array.size()> interlaced_array;
-
-	auto position_iterator = position_array.begin();
-	auto color_iterator = color_array.begin();
-	auto interlaced_iterator = interlaced_array.begin();
-
-	for (int i = 0; i < amount_of_vertices; ++i)
-	{
-		for (int j=0; j < spacial_dimensions; ++j)
+    std::array<Type, size1 + size2> result;
+		if(size1 % number_of_vertices != 0)
 		{
-			*interlaced_iterator = *position_iterator;
-			position_iterator++;
-			interlaced_iterator++;
+						throw std::runtime_error("array1.size() needs to be divisible by number_of_vertices");
 		}
-		for (int j=0; j < color_channels; ++j)
+		if(size2 % number_of_vertices != 0)
 		{
-			*interlaced_iterator = *color_iterator;
-			color_iterator++;
-			interlaced_iterator++;
+						throw std::runtime_error("array2.size() needs to be divisible by number_of_vertices");
 		}
-	}
 
-	return interlaced_array;
+		std::size_t number_of_dimensions_1 = size1 / number_of_vertices;
+		std::size_t number_of_dimensions_2 = size2 / number_of_vertices;
+
+		auto it_1 = array1.begin();
+		auto it_2 = array2.begin();
+		auto it_result = result.begin();
+		for (std::size_t i = 0; i < number_of_vertices; i++)
+		{
+						for (std::size_t j = 0; j < number_of_dimensions_1; j++)
+						{
+										*it_result = *it_1;
+										it_result++;
+										it_1++;
+						}
+						for (std::size_t j = number_of_dimensions_1; j < number_of_dimensions_1 + number_of_dimensions_2; j++)
+						{
+										*it_result = *it_2;
+										it_result++;
+										it_2++;
+						}
+		}
+    return result;
 }
 
 template <typename index_type, int amount_of_triangles>
@@ -41,6 +51,28 @@ auto CreateUpperTriangleIndices(const unsigned int grid_width, const unsigned in
             *upper_triangle_index_iterator = i + j * grid_width;
             upper_triangle_index_iterator++;
             *upper_triangle_index_iterator = i + j * grid_width + 1;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + (j+1) * grid_width;
+            upper_triangle_index_iterator++;
+        }
+    }
+
+    return upper_triangle_indices;
+}
+
+template <typename index_type, int amount_of_triangles>
+auto CreateLowerTriangleIndices(const unsigned int grid_width, const unsigned int grid_height)
+{
+    std::array<index_type, amount_of_triangles * 3> upper_triangle_indices;
+    auto upper_triangle_index_iterator = upper_triangle_indices.begin();
+
+    for (int j = 0; j < grid_height-1; ++j)
+    {
+        for(int i = 0; i < grid_width-1; ++i)
+        {
+            *upper_triangle_index_iterator = i + j * grid_width + 1;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + (j+1) * grid_width + 1;
             upper_triangle_index_iterator++;
             *upper_triangle_index_iterator = i + (j+1) * grid_width;
             upper_triangle_index_iterator++;
