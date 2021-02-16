@@ -77,7 +77,7 @@ add_subdirectory(src)
 add_subdirectory(app)
 
 # Add tests
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 # Add benchmarks
 add_subdirectory(benchmarks)

@@ -23,9 +23,19 @@ using namespace glm;
  
 int main( void )
 {
-    //DifferentialEquation<10> DEQ;
+    constexpr float c = 1.0f;
+    constexpr float dx = 1.0f;
+    constexpr float dt = 0.1f * (dx * dx);
+    DifferentialEquation DEQ{c,dx,dt};
+    DEQ.print_solution();
+    for (auto i=0; i<10; i++)
+    {
+        DEQ.solver_step();
+    }
+    std::cout << "========" << std::endl;
+    DEQ.print_solution();
 
-    std::cout << SHADER_PATH << std::endl;
+    std::cout << "Success" << std::endl;
 
     return 0;
 }
