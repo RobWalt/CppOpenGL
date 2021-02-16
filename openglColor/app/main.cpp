@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <fstream>
 
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -127,7 +128,7 @@ int main()
 
 	auto color_palette_c_array = color_palette.c_array();
 
-	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, color_palette.data.size(), 0, GL_RGB, GL_UNSIGNED_BYTE, color_palette_c_array);
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, color_palette.data.size(), 0, GL_RGB, GL_UNSIGNED_BYTE, color_palette.c_array());
 	glGenerateMipmap(GL_TEXTURE_1D);
 
 	// bind sampler1D color_palette to our texture
