@@ -16,6 +16,7 @@ public:
 		   const std::filesystem::path & fragment_shader_file_name_);
   void use();
   void SetUniform(const float & value, const char* name);
+  void SetUniform(const int & value, const char* name);
 private:
   void CheckCompileErrors(unsigned int, std::string);
 }; // class ShaderSourceCode

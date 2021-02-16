@@ -13,6 +13,7 @@
 #include "utilities.hpp"
 #include "glhelper.hpp"
 #include "physics.hpp"
+#include "color_palette.h"
 #include "project_variables.h"
 
 #include <array>
@@ -75,13 +76,6 @@ int main()
                 return -1;
         }
 
-	// GPU data
-	float vertices[] = {
-	    -0.5f, -0.5f, 0.0f,
-	     0.5f, -0.5f, 0.0f,
-	     0.0f,  0.5f, 0.0f,
-	};  
-
 	constexpr float dx = 1.0f;
 	constexpr float c = 1.0f;
 	constexpr float dt = 0.1 * (dx * dx) / (c * c);
@@ -97,7 +91,11 @@ int main()
 
 	auto colors = DEQ.get_current_solution();
 
-	unsigned int VBO, VAO, EBO;
+	// load color palette from file
+	const std::string color_palette_path = RESOURCE_DIR "/fire_palette.txt";
+	ColorPalette color_palette(color_palette_path);
+
+	unsigned int VBO, VAO, EBO, texture;
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -121,9 +119,26 @@ int main()
 	glVertexAttribPointer(1, my_color_channels, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(positions)));
 	glEnableVertexAttribArray(1);
 
+	// fill uniform in fragment shader with data
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_1D, texture);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, color_palette.data.size(), 0, GL_RGB, GL_UNSIGNED_BYTE, color_palette.c_array());
+	glGenerateMipmap(GL_TEXTURE_1D);
+
+
+	// VAO initialization
+
 	std::string vertex_shader_path = SHADER_DIR "/vertex_shader.glsl";
 	std::string fragment_shader_path = SHADER_DIR "/fragment_shader.glsl";
 	ShaderSourceCode our_shader(vertex_shader_path, fragment_shader_path);
+
+	// bind sampler1D color_palette to our texture
+	our_shader.use();
+	our_shader.SetUniform(0, "color_palette");
 
 	auto accumulated_time = 0.0f;
 	auto last_time = 0.0f;
@@ -141,6 +156,9 @@ int main()
 		our_shader.use();
 
 		glBindVertexArray(VAO);
+		//bind texture to corresponding texture unit
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_1D, texture);
 
 		auto current_time = glfwGetTime();
 

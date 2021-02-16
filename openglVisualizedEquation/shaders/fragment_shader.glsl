@@ -2,7 +2,9 @@
 out vec4 frag_color;
 in float my_color;
   
+uniform sampler1D color_palette;
+
 void main()
 {
-    frag_color = vec4(my_color, my_color, my_color, 0.0f);
+    frag_color = texture(color_palette,my_color);
 }   

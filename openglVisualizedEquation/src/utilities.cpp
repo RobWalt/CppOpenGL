@@ -113,3 +113,9 @@ void ShaderSourceCode::SetUniform(const float & value, const char* name)
 	unsigned int location_uniform  =  glGetUniformLocation(program_id_, name);
 	glUniform1f(location_uniform, value);
 }
+
+void ShaderSourceCode::SetUniform(const int & value, const char* name)
+{
+	unsigned int location_uniform  =  glGetUniformLocation(program_id_, name);
+	glUniform1i(location_uniform, value);
+}
