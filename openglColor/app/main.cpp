@@ -6,8 +6,9 @@
 #include <filesystem>
 #include <fstream>
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+
+#include <glad/glad.h> 
+ #include <GLFW/glfw3.h>
 
 #include "shader.hpp"
 #include "color_palette.h"
@@ -69,7 +70,7 @@ int main()
 		0, 2, 3,
 	};
 	
-	std::array vertex_texture_coordinates{
+	std::array vertex_texture_coFordinates{
 		 1.0f,
 		 0.0f,
 		 1.0f,
@@ -119,6 +120,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 
 
 	unsigned char * color_palette_c_array =  
