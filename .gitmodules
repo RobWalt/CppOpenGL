@@ -30,3 +30,11 @@
     path = openglHeatmap/external/glew
     url = https://github.com/nigels-com/glew.git
 
+[submodule "openglVisualizedEquation/external/glfw"]
+    path = openglVisualizedEquation/external/glfw
+    url = https://github.com/glfw/glfw.git
+   
+[submodule "openglVisualizedEquation/external/glew"]
+    path = openglVisualizedEquation/external/glew
+    url = https://github.com/nigels-com/glew.git
+
