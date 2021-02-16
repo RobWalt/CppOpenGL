@@ -70,7 +70,7 @@ int main()
 		0, 2, 3,
 	};
 	
-	std::array vertex_texture_coFordinates{
+	std::array vertex_texture_coordinates{
 		 1.0f,
 		 0.0f,
 		 1.0f,
