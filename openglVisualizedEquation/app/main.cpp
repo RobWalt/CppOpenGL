@@ -12,6 +12,7 @@
 
 #include "utilities.hpp"
 #include "glhelper.hpp"
+#include "physics.hpp"
 #include "project_variables.h"
 
 #include <array>
@@ -19,15 +20,16 @@
 // manual set parameters
 constexpr unsigned int  my_color_channels = 3;
 constexpr unsigned int  my_spacial_dimensions = 3;
-constexpr unsigned int  my_grid_width = 21;
-constexpr unsigned int  my_grid_height = 21;
-constexpr float 		my_x_step_size = 0.1f;
-constexpr float 		my_y_step_size = 0.1f;
+constexpr unsigned int  my_grid_width = 101;
+constexpr unsigned int  my_grid_height = 101;
+constexpr float 		my_x_step_size = 0.02f;
+constexpr float 		my_y_step_size = 0.02f;
 
 // deduced parameters
 constexpr unsigned int my_amount_of_vertices = my_grid_width * my_grid_height;
 constexpr unsigned int my_amount_of_upper_triangles = my_amount_of_vertices - my_grid_height - my_grid_width + 1;
 constexpr unsigned int my_amount_of_lower_triangles = my_amount_of_upper_triangles;
+constexpr unsigned int my_amount_of_triangles = my_amount_of_upper_triangles + my_amount_of_lower_triangles;
 constexpr unsigned int my_vertex_length = my_spacial_dimensions + my_color_channels;
 
 
@@ -85,6 +87,9 @@ int main()
 
 	auto upper_triangle_indices = CreateUpperTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
 	auto lower_triangle_indices = CreateLowerTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
+
+	auto all_triangle_indices = ConcatenateArrays(upper_triangle_indices, lower_triangle_indices);
+
 	auto positions = CreatePositionArray<float, my_amount_of_vertices, my_spacial_dimensions>(my_grid_width, my_grid_height, my_x_step_size, my_y_step_size);
 
 	std::array<float, my_amount_of_vertices * my_color_channels> colors;  
@@ -105,38 +110,20 @@ int main()
 
 	auto interlaced_triangle_vertices = InterleaveArrays(my_amount_of_vertices, positions, colors);
 
-	unsigned int VBO, VAO1, VAO2, EBO1, EBO2;
+	unsigned int VBO, VAO, EBO;
 
-	glGenVertexArrays(1, &VAO1);
-	glGenVertexArrays(1, &VAO2);
+	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO1);
-	glGenBuffers(1, &EBO2);
+	glGenBuffers(1, &EBO);
 
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-	glBindVertexArray(VAO1);
+	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(interlaced_triangle_vertices), interlaced_triangle_vertices.data(), GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO1);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(upper_triangle_indices), upper_triangle_indices.data(), GL_STATIC_DRAW);
-
-	// position attribute
-	glVertexAttribPointer(0, my_spacial_dimensions, GL_FLOAT, GL_FALSE, my_vertex_length * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	glVertexAttribPointer(1, my_color_channels, GL_FLOAT, GL_FALSE, my_vertex_length * sizeof(float), (void*)(my_spacial_dimensions * sizeof(float)));
-	glEnableVertexAttribArray(1);
-
-	glBindVertexArray(VAO2);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(interlaced_triangle_vertices), interlaced_triangle_vertices.data(), GL_STATIC_DRAW);
-
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO2);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(lower_triangle_indices), lower_triangle_indices.data(), GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(all_triangle_indices), all_triangle_indices.data(), GL_STATIC_DRAW);
 
 	// position attribute
 	glVertexAttribPointer(0, my_spacial_dimensions, GL_FLOAT, GL_FALSE, my_vertex_length * sizeof(float), (void*)0);
@@ -161,11 +148,8 @@ int main()
 		// render triangle
 		our_shader.use();
 
-		glBindVertexArray(VAO1);
-		glDrawElements(GL_TRIANGLES, 3*my_amount_of_upper_triangles, GL_UNSIGNED_INT, 0);
-
-		glBindVertexArray(VAO2);
-		glDrawElements(GL_TRIANGLES, 3*my_amount_of_lower_triangles, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 3*my_amount_of_triangles, GL_UNSIGNED_INT, 0);
 
 		// Poll events
 		glfwSwapBuffers(window);

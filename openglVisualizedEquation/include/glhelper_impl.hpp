@@ -1,5 +1,6 @@
 #include <array>
 #include <stdexcept>
+#include <algorithm>
 
 template <typename Type, std::size_t size1, std::size_t size2>
 auto InterleaveArrays(const std::size_t & number_of_vertices, const std::array<Type, size1> & array1, const std::array<Type, size2> & array2)
@@ -102,4 +103,13 @@ auto CreatePositionArray(const unsigned int grid_width, const unsigned int grid_
 	}
 
     return positions;
+}
+
+template<typename T, std::size_t N, std::size_t M>
+auto ConcatenateArrays(const std::array<T, N>& array1, const std::array<T, M>& array2)
+{
+    std::array<T, N+M> result;
+    std::copy (array1.cbegin(), array1.cend(), result.begin());
+    std::copy (array2.cbegin(), array2.cend(), result.begin() + N);
+    return result;
 }

@@ -14,4 +14,7 @@ auto CreateLowerTriangleIndices(const unsigned int grid_width, const unsigned in
 template <typename position_type, int amount_of_vertices, int spacial_dimensions>
 auto CreatePositionArray(const unsigned int grid_width, const unsigned int grid_height, const float x_step_size, const float y_step_size);
 
+template<typename T, std::size_t N, std::size_t M>
+auto ConcatenateArrays(const std::array<T, N>& array1, const std::array<T, M>& array2);
+
 #include "glhelper_impl.hpp"
