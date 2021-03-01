@@ -13,6 +13,10 @@ configure_file("${PROJECT_SOURCE_DIR}/include/project_variables.h.in"
 	"${PROJECT_BINARY_DIR}/project_variables.h" @ONLY)
 
 # Project/Library names
+# external
+set(GLAD_LIBRARY glad_lib)
+set(GLFW_LIBRARY glfw_lib)
+# self made
 set(MAIN main)
 set(UTILITY_LIB utility)
 set(GLHELPER_LIB glhelper)
@@ -23,21 +27,19 @@ find_package(OpenGL REQUIRED)
 
 # GLFW
 
-add_subdirectory("${PROJECT_SOURCE_DIR}/external/glfw/")
-include_directories(
-	external/glfw/include/GLFW/
-)
+#add_subdirectory("${PROJECT_SOURCE_DIR}/external/glfw/")
+#include_directories(
+#	external/glfw/include/GLFW/
+#)
 
-# GLEW
-
-find_package(GLEW REQUIRED)
+add_subdirectory("${PROJECT_SOURCE_DIR}/external/")
 
 # These are the libraries
 
 set(ALL_LIBS
 	${OPENGL_LIBRARY}
-	glfw
-	GLEW
+	glad_lib
+	glfw_lib
 )
 
 # utility_lib
