@@ -16,6 +16,7 @@ class DifferentialEquation
         void solver_step();
         domain_type get_current_solution();
         void print_solution();
+        void add_heat(const std::array<bool, domain_size>& add_heat_here);
 
     private:
 

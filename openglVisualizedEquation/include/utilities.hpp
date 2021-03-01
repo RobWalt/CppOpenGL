@@ -4,9 +4,12 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <optional>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
+std::optional<std::array<float,2>> processMouseInput(GLFWwindow *window, bool& eventShouldTrigger);
+
 
 class ShaderSourceCode
 {

@@ -113,3 +113,20 @@ auto ConcatenateArrays(const std::array<T, N>& array1, const std::array<T, M>& a
     std::copy (array2.cbegin(), array2.cend(), result.begin() + N);
     return result;
 }
+
+template<typename position_type, std::size_t amount_of_vertices, std::size_t spacial_dimensions>
+void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool, amount_of_vertices>& bool_array, const std::array<position_type, spacial_dimensions * amount_of_vertices>& vertex_array)
+{
+	auto x_iter = vertex_array.cbegin();
+	auto y_iter = vertex_array.cbegin() + 1;
+	for (auto& bool_val : bool_array)
+	{
+		auto dist_x = x-*x_iter;
+		auto dist_y = y-*y_iter;
+
+		bool_val = (dist_x*dist_x + dist_y*dist_y) < 0.025;
+
+		x_iter += 3;
+		y_iter += 3;
+	}
+}
