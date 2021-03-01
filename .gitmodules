@@ -3,8 +3,8 @@
     url = https://github.com/glfw/glfw.git
    
 [submodule "openglVisualizedEquation/external/glad"]
-    path = openglVisualizedEquation/external/glad
-    url = https://gihub.com/Dav1dde/glad.git
+	path = openglVisualizedEquation/external/glad
+	url = https://github.com/Dav1dde/glad.git
 
 [submodule "openglVisualizedEquation/external/glad"]
 	path = openglVisualizedEquation/external/glad
