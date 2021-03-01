@@ -1,2 +1,0 @@
-#define SHADER_DIR "@PROJECT_SOURCE_DIR@/shaders/"
-#define RESOURCE_DIR "@PROJECT_SOURCE_DIR@/resources/"
