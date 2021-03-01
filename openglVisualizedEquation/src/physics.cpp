@@ -9,7 +9,7 @@ DifferentialEquation::DifferentialEquation(precision_type c, precision_type dx, 
     dx_ = dx;
     dt_ = dt;
     lambda_ = (c_ * c_ * dt_) / (dx_ * dx_);
-    std::fill(solution_.begin() + (domain_size / 2) - (domain_width/2) , solution_.begin() + (domain_size / 2) + (domain_width/2), 1.0f);
+    std::fill(solution_.begin() + (domain_size / 2) - (domain_width/2) - 5*domain_width, solution_.begin() + (domain_size / 2) + (domain_width/2), 1.0f);
     solution_[domain_size/2] = 1.0f;
     if (!is_stable()) {
         std::cout << "NOT STABLE!!!! EVERYTHING WILL BREAK!!" << std::endl;
