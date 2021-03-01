@@ -5,8 +5,7 @@
 #include <cmath>
 #include <filesystem>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 #include <GLFW/glfw3.h>
 
@@ -68,13 +67,10 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
-	glewExperimental = GL_TRUE;
-	if (glewInit() != GLEW_OK) {
-                fprintf(stderr, "Failed to initialize GLEW\n");
-                getchar();
-                glfwTerminate();
-                return -1;
-        }
+	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
+	{
+		throw std::runtime_error("Failed to load glad.");
+	}
 
 	constexpr float dx = 1.0f;
 	constexpr float c = 1.0f;
