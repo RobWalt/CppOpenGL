@@ -5,8 +5,7 @@
 #include <cmath>
 #include <filesystem>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 #include <GLFW/glfw3.h>
 
@@ -68,7 +67,7 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
-	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress))
+	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
 	{
 		throw std::runtime_error("Failed to load glad.");
 	}

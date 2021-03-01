@@ -2,6 +2,7 @@ set(UTILITY_SOURCES "utilities.cpp")
 set(UTILITY_INCLUDES "${PROJECT_SOURCE_DIR}/include/")
 add_library(${UTILITY_LIB} OBJECT ${UTILITY_SOURCES})
 target_include_directories(${UTILITY_LIB} PUBLIC ${UTILITY_INCLUDES})
+target_link_libraries(${UTILITY_LIB} PRIVATE ${GLAD_LIBRARY})
 target_compile_features(${UTILITY_LIB} PUBLIC cxx_std_17)
 
 set(GLHELPER_SOURCES "glhelper.cpp")

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(openglBoilerplate VERSION 1.0.0 LANGUAGES CXX)
+project(openglBoilerplate VERSION 1.0.0 LANGUAGES CXX C)
 
 # Global CMake variables are set here
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
@@ -14,8 +14,8 @@ configure_file("${PROJECT_SOURCE_DIR}/include/project_variables.h.in"
 
 # Project/Library names
 # external
-set(GLAD_LIBRARY glad_lib)
 set(GLFW_LIBRARY glfw_lib)
+set(GLAD_LIBRARY glad_lib)
 # self made
 set(MAIN main)
 set(UTILITY_LIB utility)
@@ -24,13 +24,6 @@ set(LIBRARY_PHYSICS physics)
 set(LIBRARY_COLORS colors)
 
 find_package(OpenGL REQUIRED)
-
-# GLFW
-
-#add_subdirectory("${PROJECT_SOURCE_DIR}/external/glfw/")
-#include_directories(
-#	external/glfw/include/GLFW/
-#)
 
 add_subdirectory("${PROJECT_SOURCE_DIR}/external/")
 
