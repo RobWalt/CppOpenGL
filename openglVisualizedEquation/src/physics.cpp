@@ -95,3 +95,17 @@ void DifferentialEquation::print_solution()
         } 
     }
 }
+
+
+void DifferentialEquation::add_heat(const std::array<bool, domain_size>& add_heat_here)
+{
+    auto new_heat_iter = add_heat_here.cbegin();
+    for (auto& old_heat : solution_)
+    {
+        if(*new_heat_iter)
+        {
+            old_heat = 1.0f;
+        }
+        new_heat_iter++;
+    }
+}

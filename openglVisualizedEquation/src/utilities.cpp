@@ -15,6 +15,28 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 }
 
+std::optional<std::array<float,2>> processMouseInput(GLFWwindow *window, bool& eventShouldTrigger)
+{
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+    {
+        if (eventShouldTrigger)
+        {
+            double x_mouse, y_mouse;
+            glfwGetCursorPos(window, &x_mouse, &y_mouse);
+            std::cout << "Mouse Button Pressed in window #" << window << " at: " << x_mouse << ", " << y_mouse << std::endl;
+            eventShouldTrigger = false;
+            return std::array<float,2>{x_mouse, y_mouse};
+        }
+    }
+
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+    {
+        eventShouldTrigger = true;
+    }
+
+    return {};
+}
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);

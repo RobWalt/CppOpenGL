@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <filesystem>
+#include <optional>
 
 #include <glad/glad.h>
 
@@ -35,6 +36,13 @@ constexpr unsigned int my_amount_of_triangles = my_amount_of_upper_triangles + m
 // Settings.
 const unsigned int width = 800;
 const unsigned int heigth = 600;
+
+std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsigned int window_width, unsigned int window_height)
+{
+    auto x_vert = (x_pix / window_width) * 2.0 - 1;
+    auto y_vert = ((window_height - y_pix) / window_height) * 2.0 - 1;
+    return std::array<double, 2>{x_vert, y_vert};
+}
 
 int main()
 {
@@ -73,8 +81,8 @@ int main()
 	}
 
 	constexpr float dx = 1.0f;
-	constexpr float c = 1.0f;
-	constexpr float dt = 0.1 * (dx * dx) / (c * c);
+	constexpr float c = 5.0f;
+	constexpr float dt = 0.20 * (dx * dx) / (c * c);
 	DifferentialEquation DEQ(c, dx, dt);
 
 	// GPU data part II
@@ -84,6 +92,7 @@ int main()
 	auto all_triangle_indices = ConcatenateArrays(upper_triangle_indices, lower_triangle_indices);
 
 	auto positions = CreatePositionArray<float, my_amount_of_vertices, my_spacial_dimensions>(my_grid_width, my_grid_height, my_x_step_size, my_y_step_size);
+	std::array<bool, my_amount_of_vertices> is_clicked;
 
 	auto colors = DEQ.get_current_solution();
 
@@ -138,12 +147,19 @@ int main()
 
 	auto accumulated_time = 0.0f;
 	auto last_time = 0.0f;
+	auto mouseClickEventShouldTrigger = true;
 
 	while(!glfwWindowShouldClose(window))
 	{
 		// Process inputs
 		processInput(window);
-
+		auto mouse_clicked = processMouseInput(window, mouseClickEventShouldTrigger);
+		if (mouse_clicked)
+		{
+			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], width, heigth);
+			ChangeVertexValuesAround<float, my_amount_of_vertices, my_spacial_dimensions>(vert_mouse_data[0], vert_mouse_data[1], is_clicked, positions);
+			DEQ.add_heat(is_clicked);
+		}
 		//render
 		glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 		glClear( GL_COLOR_BUFFER_BIT );

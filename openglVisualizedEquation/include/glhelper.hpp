@@ -17,4 +17,7 @@ auto CreatePositionArray(const unsigned int grid_width, const unsigned int grid_
 template<typename T, std::size_t N, std::size_t M>
 auto ConcatenateArrays(const std::array<T, N>& array1, const std::array<T, M>& array2);
 
+template<typename position_type, std::size_t amount_of_vertices, std::size_t spacial_dimensions>
+void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool, amount_of_vertices>& bool_array, const std::array<position_type, spacial_dimensions * amount_of_vertices>& vertex_array);
+
 #include "glhelper_impl.hpp"
