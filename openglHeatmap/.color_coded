@@ -1,8 +1,0 @@
--x
-c
--D_GLFW_USE_CONFIG_H
--I/home/sol/cpp_basics/openglTriangle/external/glfw/include
--I/home/sol/cpp_basics/openglTriangle/external/glfw/src
--I/tmp/tmpZadONH/external/glfw/src
--Wall
--std=c99
