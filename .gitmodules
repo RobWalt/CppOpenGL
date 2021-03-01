@@ -38,3 +38,6 @@
     path = openglVisualizedEquation/external/glew
     url = https://github.com/nigels-com/glew.git
 
+[submodule "openglVisualizedEquation/external/glad"]
+	path = openglVisualizedEquation/external/glad
+	url = https://github.com/Dav1dde/glad.git
