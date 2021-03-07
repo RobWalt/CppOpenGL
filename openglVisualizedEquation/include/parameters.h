@@ -4,8 +4,8 @@ using INDEX_TYPE = GLuint;
 using PRECISION_TYPE = GLfloat;
 
 // Window settings
-#define WINDOW_WIDTH                                                        600
-#define WINDOW_HEIGHT                                                       800
+#define WINDOW_WIDTH                                                        800
+#define WINDOW_HEIGHT                                                       600
 
 // Render settings
 #define GRID_WIDTH                                                          101
