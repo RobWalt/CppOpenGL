@@ -44,17 +44,15 @@ std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsi
     return std::array<double, 2>{x_vert, y_vert};
 }
 
-int main()
-{
+std::unique_ptr<GLFWwindow> CreateWindow(const unsigned int width, const unsigned int height){
+	// Start of window class;
+	
 	//glfwInit();
 	// Initialise GLFW
-        if( !glfwInit() )
-        {
-                fprintf( stderr, "Failed to initialize GLFW\n" );
-                getchar();
-                return -1;
-        }
-
+	if( !glfwInit() )
+	{
+		throw std::runtime_error("Failed to initialize GLFW\n");
+ 	}
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
@@ -62,23 +60,27 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-
-	GLFWwindow* window =glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL);
+	std::unique_ptr<GLFWwindow> window = std::make_unique<GLFWwindow>(glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL));
 
 	if( window == NULL ){
-                fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-                getchar();
-                glfwTerminate();
-                return -1;
-        }
+				glfwTerminate();
+				throw std::runtime_error("Failed to open GLFW window.");
+	}
 
-
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(window.get());
 
 	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
 	{
 		throw std::runtime_error("Failed to load glad.");
 	}
+	// End of window class
+	
+	return window;
+}
+
+int main()
+{
+	auto window = CreateWindow(width,heigth);
 
 	constexpr float dx = 1.0f;
 	constexpr float c = 5.0f;
@@ -134,7 +136,6 @@ int main()
 	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGB, color_palette.data.size(), 0, GL_RGB, GL_UNSIGNED_BYTE, color_palette.c_array());
 	glGenerateMipmap(GL_TEXTURE_1D);
 
-
 	// VAO initialization
 
 	std::string vertex_shader_path = SHADER_DIR "/vertex_shader.glsl";
@@ -149,11 +150,11 @@ int main()
 	auto last_time = 0.0f;
 	auto mouseClickEventShouldTrigger = true;
 
-	while(!glfwWindowShouldClose(window))
+	while(!glfwWindowShouldClose(window.get()))
 	{
 		// Process inputs
-		processInput(window);
-		auto mouse_clicked = processMouseInput(window, mouseClickEventShouldTrigger);
+		processInput(window.get());
+		auto mouse_clicked = processMouseInput(window.get(), mouseClickEventShouldTrigger);
 		if (mouse_clicked)
 		{
 			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], width, heigth);
@@ -188,7 +189,7 @@ int main()
 		glDrawElements(GL_TRIANGLES, 3*my_amount_of_triangles, GL_UNSIGNED_INT, 0);
 
 		// Poll events
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(window.get());
 		glfwPollEvents();
 	}
 	glfwTerminate();
