@@ -92,7 +92,8 @@ SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height
 int main()
 {
 	// Test area
-	Heatmap test{std::array{1.0f,1.0f}};
+	//Heatmap test{std::array{1.0f,1.0f}};
+	auto test = CreateTriangleIndices<2,3>();
 	// End Test area
 	
 	auto window = CreateWindow(width,heigth);

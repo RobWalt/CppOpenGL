@@ -131,6 +131,33 @@ void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool,
 	}
 }
 
-template<std::size_t N>
-Heatmap<N>::Heatmap(const DomainType<N> & data):data_(data){
+template<std::size_t grid_width, std::size_t grid_height>
+std::array<GLuint,(grid_width-1)*(grid_height-1)*2*3>CreateTriangleIndices(){
+		constexpr std::size_t amount_of_triangles = (grid_width-1)*(grid_height-1);
+		std::array<GLuint,amount_of_triangles*2*3> result;
+		// Create upper triangle indices
+		auto lower_triangle_indices = CreateLowerTriangleIndices<GLuint,amount_of_triangles>(grid_width, grid_height);
+		auto upper_triangle_indices = CreateUpperTriangleIndices<GLuint,amount_of_triangles>(grid_width, grid_height);
+		result = ConcatenateArrays(lower_triangle_indices,upper_triangle_indices);
 }
+
+
+//template<std::size_t number_of_vertices, std::size_t number_of_triangles>
+//Heatmap<number_of_vertices>::Heatmap(
+//								const Grid<number_of_vertices> & grid,
+//							 	const std::array<GLuint,3*number_of_triangles> indices
+//								const Gluint grid_width;
+//								const Gluint grid_height;
+//								)
+//				: data_{}
+//{
+//	std::array<GLuint, amount_of_triangles * 3> triangle_indices;
+//}
+
+// API possibility for CreatePositionArray
+//
+//(const DomainType<N> & data,
+//							 	const Position & upper_left_corner,
+//								const Position & lower_right_corner,
+//								const PrecisionType grid_width, 
+//								const PrecisionType grid_height)
