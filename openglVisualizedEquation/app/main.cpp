@@ -15,102 +15,29 @@
 #include "physics.hpp"
 #include "color_palette.h"
 #include "project_variables.h"
+#include "parameters.h"
 
 #include <array>
-
-// manual set parameters
-constexpr unsigned int  my_color_channels = 1;
-constexpr unsigned int  my_spacial_dimensions = 3;
-constexpr unsigned int  my_grid_width = 101;
-constexpr unsigned int  my_grid_height = 101;
-constexpr float 		my_x_step_size = 0.02f;
-constexpr float 		my_y_step_size = 0.02f;
-
-// deduced parameters
-constexpr unsigned int my_amount_of_vertices = my_grid_width * my_grid_height;
-constexpr unsigned int my_amount_of_upper_triangles = my_amount_of_vertices - my_grid_height - my_grid_width + 1;
-constexpr unsigned int my_amount_of_lower_triangles = my_amount_of_upper_triangles;
-constexpr unsigned int my_amount_of_triangles = my_amount_of_upper_triangles + my_amount_of_lower_triangles;
-
-
-// Settings.
-const unsigned int width = 800;
-const unsigned int heigth = 600;
-
-std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsigned int window_width, unsigned int window_height)
-{
-    auto x_vert = (x_pix / window_width) * 2.0 - 1;
-    auto y_vert = ((window_height - y_pix) / window_height) * 2.0 - 1;
-    return std::array<double, 2>{x_vert, y_vert};
-}
-
-struct DestroyGLFWWindow{
-
-    void operator()(GLFWwindow* ptr){
-         glfwDestroyWindow(ptr);
-    }
-
-};
-
-using SmartGLFWWindow = std::unique_ptr<GLFWwindow,DestroyGLFWWindow>;
-
-SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height){
-	// Start of window class;
-	
-	//glfwInit();
-	// Initialise GLFW
-	if( !glfwInit() )
-	{
-		throw std::runtime_error("Failed to initialize GLFW\n");
- 	}
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	SmartGLFWWindow window = SmartGLFWWindow(glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL));
-
-	if( window == NULL ){
-				glfwTerminate();
-				throw std::runtime_error("Failed to open GLFW window.");
-	}
-
-	glfwMakeContextCurrent(window.get());
-
-	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
-	{
-		throw std::runtime_error("Failed to load glad.");
-	}
-	// End of window class
-	
-	return window;
-}
-
 
 int main()
 {
 	// Test area
 	//Heatmap test{std::array{1.0f,1.0f}};
-	auto test = CreateTriangleIndices<2,3>();
+	//auto test = CreateTriangleIndices<2,3>();
 	// End Test area
 	
-	auto window = CreateWindow(width,heigth);
+	auto window = CreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	constexpr float dx = 1.0f;
-	constexpr float c = 5.0f;
-	constexpr float dt = 0.20 * (dx * dx) / (c * c);
-	DifferentialEquation DEQ(c, dx, dt);
+	DifferentialEquation DEQ(DIFF_EQ_C, DIFF_EQ_DX, DIFF_EQ_DT);
 
 	// GPU data part II
-	auto upper_triangle_indices = CreateUpperTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
-	auto lower_triangle_indices = CreateLowerTriangleIndices<unsigned int, my_amount_of_upper_triangles>(my_grid_width, my_grid_height);
+	auto upper_triangle_indices = CreateUpperTriangleIndices(GRID_WIDTH, GRID_HEIGHT);
+	auto lower_triangle_indices = CreateLowerTriangleIndices(GRID_WIDTH, GRID_HEIGHT);
 
 	auto all_triangle_indices = ConcatenateArrays(upper_triangle_indices, lower_triangle_indices);
 
-	auto positions = CreatePositionArray<float, my_amount_of_vertices, my_spacial_dimensions>(my_grid_width, my_grid_height, my_x_step_size, my_y_step_size);
-	std::array<bool, my_amount_of_vertices> is_clicked;
+	auto positions = CreatePositionArray(GRID_WIDTH, GRID_HEIGHT, STEPSIZE_X, STEPSIZE_Y);
+	std::array<bool, AMOUNT_OF_GRID_POINTS> is_clicked;
 
 	auto colors = DEQ.get_current_solution();
 
@@ -136,10 +63,10 @@ int main()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(all_triangle_indices), all_triangle_indices.data(), GL_STATIC_DRAW);
 
 	// position attribute
-	glVertexAttribPointer(0, my_spacial_dimensions, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(0, SPATIAL_DIMENSIONS, GL_FLOAT, GL_FALSE, 0, (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, my_color_channels, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(positions)));
+	glVertexAttribPointer(1, COLOR_CHANNELS, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(positions)));
 	glEnableVertexAttribArray(1);
 
 	// fill uniform in fragment shader with data
@@ -173,8 +100,8 @@ int main()
 		auto mouse_clicked = processMouseInput(window.get(), mouseClickEventShouldTrigger);
 		if (mouse_clicked)
 		{
-			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], width, heigth);
-			ChangeVertexValuesAround<float, my_amount_of_vertices, my_spacial_dimensions>(vert_mouse_data[0], vert_mouse_data[1], is_clicked, positions);
+			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], WINDOW_WIDTH, WINDOW_HEIGHT);
+			ChangeVertexValuesAround(vert_mouse_data[0], vert_mouse_data[1], is_clicked, positions);
 			DEQ.add_heat(is_clicked);
 		}
 		//render
@@ -194,7 +121,7 @@ int main()
 		auto time_passed_this_iteration = current_time - last_time;
 		accumulated_time += time_passed_this_iteration;
 		last_time = current_time;
-		if (accumulated_time >= dt)
+		if (accumulated_time >= DIFF_EQ_DT)
 		{
 			DEQ.solver_step();
 			colors = DEQ.get_current_solution();
@@ -202,7 +129,7 @@ int main()
 			accumulated_time = 0.0f;
 		}
 
-		glDrawElements(GL_TRIANGLES, 3*my_amount_of_triangles, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, AMOUNT_OF_TRIANGLE_INDICES_TOTAL, GL_UNSIGNED_INT, 0);
 
 		// Poll events
 		glfwSwapBuffers(window.get());
