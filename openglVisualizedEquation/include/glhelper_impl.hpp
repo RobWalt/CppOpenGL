@@ -2,6 +2,50 @@
 #include <stdexcept>
 #include <algorithm>
 
+template <std::size_t grid_width, std::size_t grid_height>
+std::array<INDEX_TYPE, (grid_width-1)*(grid_height-1)*3> CreateUpperTriangleIndices()
+{
+    std::array<INDEX_TYPE, (grid_width-1)*(grid_height-1)*3> upper_triangle_indices;
+    auto upper_triangle_index_iterator = upper_triangle_indices.begin();
+
+    for (int j = 0; j < grid_height-1; ++j)
+    {
+        for(int i = 0; i < grid_width-1; ++i)
+        {
+            *upper_triangle_index_iterator = i + j * grid_width;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + j * grid_width + 1;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + (j+1) * grid_width;
+            upper_triangle_index_iterator++;
+        }
+    }
+
+    return upper_triangle_indices;
+}
+
+template <std::size_t grid_width, std::size_t grid_height>
+std::array<INDEX_TYPE, (grid_width-1)*(grid_height-1)*3> CreateLowerTriangleIndices()
+{
+    std::array<INDEX_TYPE, (grid_width-1)*(grid_height-1)*3> upper_triangle_indices;
+    auto upper_triangle_index_iterator = upper_triangle_indices.begin();
+
+    for (int j = 0; j < grid_height-1; ++j)
+    {
+        for(int i = 0; i < grid_width-1; ++i)
+        {
+            *upper_triangle_index_iterator = i + j * grid_width + 1;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + (j+1) * grid_width + 1;
+            upper_triangle_index_iterator++;
+            *upper_triangle_index_iterator = i + (j+1) * grid_width;
+            upper_triangle_index_iterator++;
+        }
+    }
+
+    return upper_triangle_indices;
+}
+
 template <typename Type, std::size_t size1, std::size_t size2>
 auto InterleaveArrays(const std::size_t & number_of_vertices, const std::array<Type, size1> & array1, const std::array<Type, size2> & array2)
 {
@@ -48,34 +92,35 @@ auto ConcatenateArrays(const std::array<T, N>& array1, const std::array<T, M>& a
     return result;
 }
 
-//template<std::size_t grid_width, std::size_t grid_height>
-//std::array<GLuint,(grid_width-1)*(grid_height-1)*2*3>CreateTriangleIndices(){
-//		constexpr std::size_t amount_of_triangles = (grid_width-1)*(grid_height-1);
-//		std::array<GLuint,amount_of_triangles*2*3> result;
-//		// Create upper triangle indices
-//		auto lower_triangle_indices = CreateLowerTriangleIndices<GLuint,amount_of_triangles>(grid_width, grid_height);
-//		auto upper_triangle_indices = CreateUpperTriangleIndices<GLuint,amount_of_triangles>(grid_width, grid_height);
-//		result = ConcatenateArrays(lower_triangle_indices,upper_triangle_indices);
-//    return result;
-//}
+template<std::size_t grid_width, std::size_t grid_height>
+std::array<INDEX_TYPE,(grid_width-1)*(grid_height-1)*2*3>CreateTriangleIndices(){
+		constexpr std::size_t amount_of_triangles = (grid_width-1)*(grid_height-1);
+		std::array<INDEX_TYPE,amount_of_triangles*2*3> result;
+		// Create upper triangle indices
+		auto lower_triangle_indices = CreateLowerTriangleIndices<grid_width, grid_height>();
+		auto upper_triangle_indices = CreateUpperTriangleIndices<grid_width, grid_height>();
+		result = ConcatenateArrays(lower_triangle_indices,upper_triangle_indices);
+    return result;
+}
 
 template<std::size_t N>
-Heatmap<N>::Heatmap(const Grid<N> & grid, const std::array<GLuint,N> indices):
+Heatmap<N>::Heatmap(const Grid<N> & grid, const Indice_array<N>& indices):
 				data_{}
 {
+    auto [VAO,VBO, EBO] = LoadVertexData(3,{0,1,2},{Expand(grid), {1.0f}},{0,1});
 }
 
 
 //template<std::size_t number_of_vertices, std::size_t number_of_triangles>
 //Heatmap<number_of_vertices>::Heatmap(
 //								const Grid<number_of_vertices> & grid,
-//							 	const std::array<GLuint,3*number_of_triangles> indices
+//							 	const std::array<INDEX_TYPE,3*number_of_triangles> indices
 //								const Gluint grid_width;
 //								const Gluint grid_height;
 //								)
 //				: data_{}
 //{
-//	std::array<GLuint, amount_of_triangles * 3> triangle_indices;
+//	std::array<INDEX_TYPE, amount_of_triangles * 3> triangle_indices;
 //}
 
 // API possibility for CreatePositionArray

@@ -19,22 +19,24 @@
 
 #include <array>
 
-int main()
+int main() 
 {
 	// Test area
-	//Heatmap test{std::array{1.0f,1.0f}};
+	std::cout << CPP_STANDARD << std::endl;
+	Grid<3> grid{Position{1.0f, 1.0f},
+				 Position{1.0f, 0.0f},
+				 Position{0.0f, 0.0f}};
+	Heatmap test{grid, {0,1,2}};
 	//auto test = CreateTriangleIndices<2,3>();
 	// End Test area
-	
+
 	auto window = CreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	DifferentialEquation DEQ(DIFF_EQ_C, DIFF_EQ_DX, DIFF_EQ_DT);
 
 	// GPU data part II
-	auto upper_triangle_indices = CreateUpperTriangleIndices(GRID_WIDTH, GRID_HEIGHT);
-	auto lower_triangle_indices = CreateLowerTriangleIndices(GRID_WIDTH, GRID_HEIGHT);
 
-	auto all_triangle_indices = ConcatenateArrays(upper_triangle_indices, lower_triangle_indices);
+	auto all_triangle_indices = CreateTriangleIndices<GRID_WIDTH, GRID_HEIGHT>();
 
 	auto positions = CreatePositionArray(GRID_WIDTH, GRID_HEIGHT, STEPSIZE_X, STEPSIZE_Y);
 	std::array<bool, AMOUNT_OF_GRID_POINTS> is_clicked;
