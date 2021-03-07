@@ -44,7 +44,17 @@ std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsi
     return std::array<double, 2>{x_vert, y_vert};
 }
 
-std::unique_ptr<GLFWwindow> CreateWindow(const unsigned int width, const unsigned int height){
+struct DestroyGLFWWindow{
+
+    void operator()(GLFWwindow* ptr){
+         glfwDestroyWindow(ptr);
+    }
+
+};
+
+using SmartGLFWWindow = std::unique_ptr<GLFWwindow,DestroyGLFWWindow>;
+
+SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height){
 	// Start of window class;
 	
 	//glfwInit();
@@ -60,7 +70,7 @@ std::unique_ptr<GLFWwindow> CreateWindow(const unsigned int width, const unsigne
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	std::unique_ptr<GLFWwindow> window = std::make_unique<GLFWwindow>(glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL));
+	SmartGLFWWindow window = SmartGLFWWindow(glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL));
 
 	if( window == NULL ){
 				glfwTerminate();
