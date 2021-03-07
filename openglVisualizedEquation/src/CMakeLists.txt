@@ -9,6 +9,7 @@ set(GLHELPER_SOURCES "glhelper.cpp")
 set(GLHELPER_INCLUDES "${PROJECT_SOURCE_DIR}/include/")
 add_library(${GLHELPER_LIB} OBJECT ${GLHELPER_SOURCES})
 target_include_directories(${GLHELPER_LIB} PUBLIC ${GLHELPER_INCLUDES})
+target_link_libraries(${GLHELPER_LIB} PRIVATE ${GLAD_LIBRARY})
 target_compile_features(${GLHELPER_LIB} PUBLIC cxx_std_17)
 
 # Equation solver Library

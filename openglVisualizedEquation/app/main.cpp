@@ -88,8 +88,13 @@ SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height
 	return window;
 }
 
+
 int main()
 {
+	// Test area
+	Heatmap test{std::array{1.0f,1.0f}};
+	// End Test area
+	
 	auto window = CreateWindow(width,heigth);
 
 	constexpr float dx = 1.0f;

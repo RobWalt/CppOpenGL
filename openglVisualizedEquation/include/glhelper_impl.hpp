@@ -130,3 +130,7 @@ void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool,
 		y_iter += 3;
 	}
 }
+
+template<std::size_t N>
+Heatmap<N>::Heatmap(const DomainType<N> & data):data_(data){
+}
