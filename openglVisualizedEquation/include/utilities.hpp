@@ -9,7 +9,7 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 std::optional<std::array<float,2>> processMouseInput(GLFWwindow *window, bool& eventShouldTrigger);
-
+std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsigned int window_width, unsigned int window_height);
 
 class ShaderSourceCode
 {

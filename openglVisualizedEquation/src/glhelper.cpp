@@ -84,3 +84,37 @@ void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool,
 		y_iter += 3;
 	}
 }
+
+SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height){
+	// Start of window class;
+	
+	//glfwInit();
+	// Initialise GLFW
+	if( !glfwInit() )
+	{
+		throw std::runtime_error("Failed to initialize GLFW\n");
+ 	}
+
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+	SmartGLFWWindow window = SmartGLFWWindow(glfwCreateWindow(width, height, "OpenGL", NULL, NULL));
+
+	if( window == NULL ){
+				glfwTerminate();
+				throw std::runtime_error("Failed to open GLFW window.");
+	}
+
+	glfwMakeContextCurrent(window.get());
+
+	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
+	{
+		throw std::runtime_error("Failed to load glad.");
+	}
+	// End of window class
+	
+	return window;
+}

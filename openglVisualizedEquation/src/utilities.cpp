@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <array>
 
 #include "utilities.hpp"
 
@@ -25,7 +26,7 @@ std::optional<std::array<float,2>> processMouseInput(GLFWwindow *window, bool& e
             glfwGetCursorPos(window, &x_mouse, &y_mouse);
             std::cout << "Mouse Button Pressed in window #" << window << " at: " << x_mouse << ", " << y_mouse << std::endl;
             eventShouldTrigger = false;
-            return std::array<float,2>{x_mouse, y_mouse};
+            return std::array<float,2>{(float) x_mouse, (float) y_mouse};
         }
     }
 
@@ -140,4 +141,11 @@ void ShaderSourceCode::SetUniform(const int & value, const char* name)
 {
 	unsigned int location_uniform  =  glGetUniformLocation(program_id_, name);
 	glUniform1i(location_uniform, value);
+}
+
+std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsigned int window_width, unsigned int window_height)
+{
+    auto x_vert = (x_pix / window_width) * 2.0 - 1;
+    auto y_vert = ((window_height - y_pix) / window_height) * 2.0 - 1;
+    return std::array<double, 2>{x_vert, y_vert};
 }

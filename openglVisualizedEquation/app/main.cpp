@@ -19,75 +19,15 @@
 
 #include <array>
 
-// Settings.
-const unsigned int width = 800;
-const unsigned int heigth = 600;
-
-std::array<double, 2> PixelCoordsToVertexCoords(double x_pix, double y_pix, unsigned int window_width, unsigned int window_height)
-{
-    auto x_vert = (x_pix / window_width) * 2.0 - 1;
-    auto y_vert = ((window_height - y_pix) / window_height) * 2.0 - 1;
-    return std::array<double, 2>{x_vert, y_vert};
-}
-
-struct DestroyGLFWWindow{
-
-    void operator()(GLFWwindow* ptr){
-         glfwDestroyWindow(ptr);
-    }
-
-};
-
-using SmartGLFWWindow = std::unique_ptr<GLFWwindow,DestroyGLFWWindow>;
-
-SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height){
-	// Start of window class;
-	
-	//glfwInit();
-	// Initialise GLFW
-	if( !glfwInit() )
-	{
-		throw std::runtime_error("Failed to initialize GLFW\n");
- 	}
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-
-	SmartGLFWWindow window = SmartGLFWWindow(glfwCreateWindow(width, heigth, "OpenGL", NULL, NULL));
-
-	if( window == NULL ){
-				glfwTerminate();
-				throw std::runtime_error("Failed to open GLFW window.");
-	}
-
-	glfwMakeContextCurrent(window.get());
-
-	if (! gladLoadGLLoader(GLADloadproc(glfwGetProcAddress)))
-	{
-		throw std::runtime_error("Failed to load glad.");
-	}
-	// End of window class
-	
-	return window;
-}
-
-
 int main()
 {
-	std::cout << AMOUNT_OF_GRID_POINTS << std::endl;
 	// Test area
 	Heatmap test{std::array{1.0f,1.0f}};
 	// End Test area
 	
-	auto window = CreateWindow(width,heigth);
+	auto window = CreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	constexpr float dx = 1.0f;
-	constexpr float c = 5.0f;
-	constexpr float dt = 0.20 * (dx * dx) / (c * c);
-	DifferentialEquation DEQ(c, dx, dt);
+	DifferentialEquation DEQ(DIFF_EQ_C, DIFF_EQ_DX, DIFF_EQ_DT);
 
 	// GPU data part II
 	auto upper_triangle_indices = CreateUpperTriangleIndices(GRID_WIDTH, GRID_HEIGHT);
@@ -159,7 +99,7 @@ int main()
 		auto mouse_clicked = processMouseInput(window.get(), mouseClickEventShouldTrigger);
 		if (mouse_clicked)
 		{
-			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], width, heigth);
+			std::array<double, 2> vert_mouse_data = PixelCoordsToVertexCoords((*mouse_clicked)[0], (*mouse_clicked)[1], WINDOW_WIDTH, WINDOW_HEIGHT);
 			ChangeVertexValuesAround(vert_mouse_data[0], vert_mouse_data[1], is_clicked, positions);
 			DEQ.add_heat(is_clicked);
 		}
@@ -180,7 +120,7 @@ int main()
 		auto time_passed_this_iteration = current_time - last_time;
 		accumulated_time += time_passed_this_iteration;
 		last_time = current_time;
-		if (accumulated_time >= dt)
+		if (accumulated_time >= DIFF_EQ_DT)
 		{
 			DEQ.solver_step();
 			colors = DEQ.get_current_solution();

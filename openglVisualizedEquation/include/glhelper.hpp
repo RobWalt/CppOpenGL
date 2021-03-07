@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <boost/range/combine.hpp>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "parameters.h"
 
 // Header + Implementation
@@ -15,6 +16,17 @@ std::array<INDEX_TYPE, AMOUNT_OF_TRIANGLE_INDICES> CreateLowerTriangleIndices(co
 std::array<PRECISION_TYPE, AMOUNT_OF_GRID_POINTS * SPATIAL_DIMENSIONS> CreatePositionArray(const unsigned int grid_width, const unsigned int grid_height, const float x_step_size, const float y_step_size);
 
 void ChangeVertexValuesAround(const double& x, const double& y, std::array<bool, AMOUNT_OF_GRID_POINTS>& bool_array, const std::array<PRECISION_TYPE, AMOUNT_OF_GRID_POINTS * SPATIAL_DIMENSIONS>& vertex_array);
+
+struct DestroyGLFWWindow{
+
+    void operator()(GLFWwindow* ptr){
+         glfwDestroyWindow(ptr);
+    }
+
+};
+
+using SmartGLFWWindow = std::unique_ptr<GLFWwindow,DestroyGLFWWindow>;
+SmartGLFWWindow CreateWindow(const unsigned int width, const unsigned int height);
 
 // Header Only
 template <typename Type, std::size_t size1, std::size_t size2>
