@@ -1,3 +1,0 @@
-/home/tmux/rubik/build/CMakeFiles/rebuild_cache.dir
-/home/tmux/rubik/build/CMakeFiles/edit_cache.dir
-/home/tmux/rubik/build/CMakeFiles/Rubik.dir
